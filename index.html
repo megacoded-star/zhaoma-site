@@ -734,14 +734,21 @@ target="_blank">
     return;
   }
 
-  if (data.user && (fullName || companyName)) {
-    const payload = {
+const resolvedName = fullName || data.user?.user_metadata?.full_name || '';
+  const resolvedCompany = companyName || data.user?.user_metadata?.company_name || '';
+
+  if (data.user) {
+    const { error: upsertError } = await supabase.from('clients').upsert({
       id: data.user.id,
       email: data.user.email,
-      ...(fullName ? { full_name: fullName } : {}),
-      ...(companyName ? { company_name: companyName } : {})
-    };
-    await supabase.from('clients').upsert(payload);
+      full_name: resolvedName,
+      company_name: resolvedCompany
+    });
+    if (upsertError) {
+      portalStatus.textContent = `Signed in, profile save note: ${upsertError.message}`;
+      await refreshPortalState();
+      return;
+    }
   }
 
   portalStatus.textContent = 'Signed in successfully!';
