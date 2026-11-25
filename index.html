@@ -721,22 +721,32 @@ target="_blank">
     await refreshPortalState();
   });
 
-  btnLogin.addEventListener('click', async () => {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+ btnLogin.addEventListener('click', async () => {
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+  const fullName = fullNameInput.value.trim();
+  const companyName = companyInput.value.trim();
+  portalStatus.textContent = 'Signing in...';
 
-    portalStatus.textContent = 'Signing in...';
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) {
+    portalStatus.textContent = `Sign-in error: ${error.message}`;
+    return;
+  }
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+  if (data.user && (fullName || companyName)) {
+    const payload = {
+      id: data.user.id,
+      email: data.user.email,
+      ...(fullName ? { full_name: fullName } : {}),
+      ...(companyName ? { company_name: companyName } : {})
+    };
+    await supabase.from('clients').upsert(payload);
+  }
 
-    if (error) {
-      portalStatus.textContent = `Sign-in error: ${error.message}`;
-      return;
-    }
-
-    portalStatus.textContent = 'Signed in successfully!';
-    await refreshPortalState();
-  });
+  portalStatus.textContent = 'Signed in successfully!';
+  await refreshPortalState();
+});
 
   btnLogout.addEventListener('click', async () => {
     await supabase.auth.signOut();
