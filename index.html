@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zhaoma International | Building Trusted Bridges Between China, Africa, and Global Markets</title>
   <meta name="description" content="Education, Trade, Procurement, Supplier Payment Assistance, Tourism and Cultural Exchange between China, Africa and Global Markets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -29,7 +31,7 @@
     }
 
     body {
-      font-family: Inter, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.7;
       color: var(--dark);
       background: var(--white);
@@ -81,7 +83,7 @@
 
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
@@ -92,7 +94,8 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
       color: var(--primary);
     }
 
@@ -103,21 +106,21 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      line-height: 1.12;
+      font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+      line-height: 1.14;
       margin-bottom: 24px;
       letter-spacing: -0.02em;
     }
 
     .hero p {
-      max-width: 760px;
+      max-width: 780px;
       margin: auto;
       font-size: 1.1rem;
       color: var(--muted);
     }
 
     .btn-group {
-      margin-top: 35px;
+      margin-top: 32px;
       display: flex;
       justify-content: center;
       gap: 15px;
@@ -125,7 +128,7 @@
     }
 
     .btn {
-      padding: 14px 28px;
+      padding: 13px 26px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 700;
@@ -133,11 +136,18 @@
       cursor: pointer;
       font-size: 1rem;
       font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
     }
 
     .btn:hover:not(:disabled) {
       transform: translateY(-1px);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(0);
     }
 
     .btn:disabled {
@@ -157,7 +167,7 @@
     .btn-secondary {
       border: 2px solid var(--primary);
       color: var(--primary);
-      background: transparent;
+      background: var(--white);
     }
 
     .btn-secondary:hover:not(:disabled) {
@@ -176,7 +186,7 @@
     }
 
     .section-intro {
-      max-width: 720px;
+      max-width: 740px;
       margin: auto;
       text-align: center;
       color: #666666;
@@ -216,7 +226,7 @@
     }
 
     .lang {
-      padding: 10px 16px;
+      padding: 10px 18px;
       background: var(--white);
       border-radius: 50px;
       border: 1px solid var(--border);
@@ -225,17 +235,19 @@
       font-weight: 600;
       color: var(--dark);
       cursor: pointer;
-      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
     }
 
     .lang:hover {
       border-color: var(--primary);
+      transform: translateY(-1px);
     }
 
     .lang.active {
       border-color: var(--primary);
       background: #fff5f5;
       color: var(--primary);
+      box-shadow: 0 0 0 1px var(--primary);
     }
 
     .lang-status {
@@ -243,6 +255,7 @@
       text-align: center;
       font-size: 0.95rem;
       color: var(--muted);
+      font-weight: 500;
     }
 
     .portal-box {
@@ -341,54 +354,54 @@
         <div>Zhaoma International</div>
       </div>
       <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#company">Company</a>
-        <a href="#languages">Languages</a>
-        <a href="#portal">Client Portal</a>
-        <a href="#contact">Contact</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#company" data-i18n="navCompany">Company</a>
+        <a href="#languages" data-i18n="navLanguages">Languages</a>
+        <a href="#portal" data-i18n="navPortal">Client Portal</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="container">
-      <h1>Building Trusted Bridges Between China, Africa, and Global Markets</h1>
-      <p>Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.</p>
+      <h1 data-i18n="heroTitle">Building Trusted Bridges Between China, Africa, and Global Markets</h1>
+      <p data-i18n="heroDesc">Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.</p>
       <div class="btn-group">
-        <a href="#contact" class="btn btn-primary">Talk to an Advisor</a>
-        <a href="#overview" class="btn btn-secondary">Company Overview</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="ctaAdvisor">Talk to an Advisor</a>
+        <a href="#overview" class="btn btn-secondary" data-i18n="ctaOverview">Company Overview</a>
       </div>
     </div>
   </section>
 
   <section id="services">
     <div class="container">
-      <h2>Our Services</h2>
-      <p class="section-intro">Helping individuals and organizations access opportunities across education, trade, procurement, payments, tourism and business development.</p>
+      <h2 data-i18n="servicesTitle">Our Services</h2>
+      <p class="section-intro" data-i18n="servicesIntro">Helping individuals and organizations access opportunities across education, trade, procurement, payments, tourism and business development.</p>
       <div class="grid">
         <div class="card">
-          <h3>🎓 Education Services</h3>
-          <p>University admissions, scholarships, study abroad support and academic partnerships.</p>
+          <h3 data-i18n="svc1Title">🎓 Education Services</h3>
+          <p data-i18n="svc1Desc">University admissions, scholarships, study abroad support and academic partnerships.</p>
         </div>
         <div class="card">
-          <h3>🏭 Procurement &amp; Sourcing</h3>
-          <p>Supplier sourcing, factory identification, procurement support and supplier verification.</p>
+          <h3 data-i18n="svc2Title">🏭 Procurement &amp; Sourcing</h3>
+          <p data-i18n="svc2Desc">Supplier sourcing, factory identification, procurement support and supplier verification.</p>
         </div>
         <div class="card">
-          <h3>💼 Business Development</h3>
-          <p>Partnership facilitation, market entry support and trade opportunities.</p>
+          <h3 data-i18n="svc3Title">💼 Business Development</h3>
+          <p data-i18n="svc3Desc">Partnership facilitation, market entry support and trade opportunities.</p>
         </div>
         <div class="card">
-          <h3>💰 Supplier Payment Assistance</h3>
-          <p>Support for approved supplier payment coordination and transaction assistance.</p>
+          <h3 data-i18n="svc4Title">💰 Supplier Payment Assistance</h3>
+          <p data-i18n="svc4Desc">Support for approved supplier payment coordination and transaction assistance.</p>
         </div>
         <div class="card">
-          <h3>₮ Digital Payment Options</h3>
-          <p>Approved transactions may support:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)</p>
+          <h3 data-i18n="svc5Title">₮ Digital Payment Options</h3>
+          <p data-i18n-html="svc5Html">Approved transactions may support:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)</p>
         </div>
         <div class="card">
-          <h3>🌏 Tourism &amp; Cultural Exchange</h3>
-          <p>Business tours, cultural exchange programs and international travel support.</p>
+          <h3 data-i18n="svc6Title">🌏 Tourism &amp; Cultural Exchange</h3>
+          <p data-i18n="svc6Desc">Business tours, cultural exchange programs and international travel support.</p>
         </div>
       </div>
     </div>
@@ -396,20 +409,20 @@
 
   <section class="highlight" id="company">
     <div class="container">
-      <h2>Company Profile</h2>
-      <p class="section-intro">We simplify access to educational, commercial, procurement, and cultural opportunities through trusted relationships, transparent communication, and professional support.</p>
+      <h2 data-i18n="companyTitle">Company Profile</h2>
+      <p class="section-intro" data-i18n="companyIntro">We simplify access to educational, commercial, procurement, and cultural opportunities through trusted relationships, transparent communication, and professional support.</p>
       <div class="grid">
         <div class="card">
-          <h3>Mission</h3>
-          <p>To connect people, businesses, and institutions with meaningful opportunities in China through trusted partnerships and professional guidance.</p>
+          <h3 data-i18n="missionTitle">Mission</h3>
+          <p data-i18n="missionDesc">To connect people, businesses, and institutions with meaningful opportunities in China through trusted partnerships and professional guidance.</p>
         </div>
         <div class="card">
-          <h3>Vision</h3>
-          <p>To become a trusted international gateway for education, trade, procurement and cultural collaboration.</p>
+          <h3 data-i18n="visionTitle">Vision</h3>
+          <p data-i18n="visionDesc">To become a trusted international gateway for education, trade, procurement and cultural collaboration.</p>
         </div>
         <div class="card">
-          <h3>Core Values</h3>
-          <p>Trust<br>Transparency<br>Professionalism<br>Integrity<br>Partnership</p>
+          <h3 data-i18n="valuesTitle">Core Values</h3>
+          <p data-i18n-html="valuesHtml">Trust<br>Transparency<br>Professionalism<br>Integrity<br>Partnership</p>
         </div>
       </div>
     </div>
@@ -417,15 +430,15 @@
 
   <section id="overview">
     <div class="container">
-      <h2>Corporate Overview</h2>
-      <p class="section-intro">Zhaoma International operates at the intersection of: Education + Trade + Procurement + Technology + Cross-Border Services</p>
+      <h2 data-i18n="overviewTitle">Corporate Overview</h2>
+      <p class="section-intro" data-i18n="overviewIntro">Zhaoma International operates at the intersection of: Education + Trade + Procurement + Technology + Cross-Border Services</p>
     </div>
   </section>
 
   <section id="languages">
     <div class="container">
-      <h2>Multilingual Support</h2>
-      <p class="section-intro">Support framework designed for international and African markets.</p>
+      <h2 data-i18n="languagesTitle">Multilingual Support</h2>
+      <p class="section-intro" data-i18n="languagesIntro">Support framework designed for international and African markets.</p>
       <div class="langs" id="lang-buttons" role="group" aria-label="Language selector">
         <button type="button" class="lang active" data-lang="en">English</button>
         <button type="button" class="lang" data-lang="zh">Chinese</button>
@@ -445,57 +458,57 @@
 
   <section class="highlight" id="portal">
     <div class="container">
-      <h2>Client Portal</h2>
-      <p class="section-intro">Sign up or sign in to access your Zhaoma International client profile.</p>
+      <h2 data-i18n="portalTitle">Client Portal</h2>
+      <p class="section-intro" data-i18n="portalIntro">Sign up or sign in to access your Zhaoma International client profile.</p>
       <div class="portal-box">
         <div id="auth-forms">
           <div class="form-group">
-            <label for="client-fullname">Full Name (for sign-up)</label>
+            <label for="client-fullname" data-i18n="labelFullName">Full Name (for sign-up)</label>
             <input type="text" id="client-fullname" placeholder="Your full name" autocomplete="name">
           </div>
           <div class="form-group">
-            <label for="client-company">Company Name (for sign-up)</label>
+            <label for="client-company" data-i18n="labelCompany">Company Name (for sign-up)</label>
             <input type="text" id="client-company" placeholder="Your company name" autocomplete="organization">
           </div>
           <div class="form-group">
-            <label for="client-email">Email</label>
+            <label for="client-email" data-i18n="labelEmail">Email</label>
             <input type="email" id="client-email" placeholder="client@example.com" autocomplete="email" required>
           </div>
           <div class="form-group">
-            <label for="client-password">Password</label>
+            <label for="client-password" data-i18n="labelPassword">Password</label>
             <input type="password" id="client-password" placeholder="Minimum 6 characters" autocomplete="current-password" required>
           </div>
           <div class="btn-group" style="margin-top: 20px;">
-            <button type="button" id="btn-login" class="btn btn-primary">Sign In</button>
-            <button type="button" id="btn-signup" class="btn btn-secondary">Create Account</button>
+            <button type="button" id="btn-login" class="btn btn-primary" data-i18n="btnLogin">Sign In</button>
+            <button type="button" id="btn-signup" class="btn btn-secondary" data-i18n="btnSignup">Create Account</button>
           </div>
         </div>
         <div id="signed-in-view" style="display: none;">
-          <h3>Client Profile</h3>
+          <h3 data-i18n="profileHeading">Client Profile</h3>
           <p id="profile-details">Loading profile...</p>
           <div class="btn-group" style="margin-top: 20px; justify-content: flex-start;">
-            <button type="button" id="btn-logout" class="btn btn-secondary">Sign Out</button>
+            <button type="button" id="btn-logout" class="btn btn-secondary" data-i18n="btnLogout">Sign Out</button>
           </div>
         </div>
-        <div id="portal-status" class="portal-status" role="status" aria-live="polite">Ready to connect to Zhaoma Portal.</div>
+        <div id="portal-status" class="portal-status" role="status" aria-live="polite" data-i18n="portalReady">Ready to connect to Zhaoma Portal.</div>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <h2>Contact Us</h2>
+      <h2 data-i18n="contactTitle">Contact Us</h2>
       <div class="grid">
         <div class="card">
-          <h3>Email</h3>
+          <h3 data-i18n="contactEmailTitle">Email</h3>
           <p>zhaomazhaomainternational@gmail.com</p>
         </div>
         <div class="card">
-          <h3>China Office</h3>
+          <h3 data-i18n="contactChinaTitle">China Office</h3>
           <p>+86 131 1678 1815</p>
         </div>
         <div class="card">
-          <h3>Nigeria Office</h3>
+          <h3 data-i18n="contactNigeriaTitle">Nigeria Office</h3>
           <p>+234 904 244 1661</p>
         </div>
       </div>
@@ -504,19 +517,19 @@
 
   <section class="highlight" id="policies">
     <div class="container">
-      <h2>Policies</h2>
-      <p class="section-intro">Governing terms, privacy practices, and refund rules for using Zhaoma International and its services.</p>
+      <h2 data-i18n="policiesTitle">Policies</h2>
+      <p class="section-intro" data-i18n="policiesIntro">Governing terms, privacy practices, and refund rules for using Zhaoma International and its services.</p>
       <div class="card" id="terms" style="margin-top: 30px;">
-        <h3>Terms of Service</h3>
-        <p>All platform information, guidance, and facilitation across education, procurement, trade, business development, payment assistance, and cultural exchange are provided on an "as-is" and "as-available" basis without guarantee of admission, approval, supplier performance, or specific commercial outcomes. Zhaoma International reserves the right to accept, decline, suspend, or terminate any inquiry, account, or engagement at its sole discretion, update terms or offerings at any time, and limit liability to the fullest extent permitted by law.</p>
+        <h3 data-i18n="termsTitle">Terms of Service</h3>
+        <p data-i18n="termsBody">All platform information, guidance, and facilitation across education, procurement, trade, business development, payment assistance, and cultural exchange are provided on an "as-is" and "as-available" basis without guarantee of admission, approval, supplier performance, or specific commercial outcomes. Zhaoma International reserves the right to accept, decline, suspend, or terminate any inquiry, account, or engagement at its sole discretion, update terms or offerings at any time, and limit liability to the fullest extent permitted by law.</p>
       </div>
       <div class="card" id="privacy" style="margin-top: 25px;">
-        <h3>Privacy Policy</h3>
-        <p>By submitting inquiries or registering in the Client Portal, you authorize Zhaoma International to collect, store, and process your account and inquiry details (including name, company, email, and service requests) across borders and share relevant details with vetted partners, institutions, suppliers, or service providers as needed to evaluate or coordinate requests. Zhaoma International is not responsible for third-party websites, external platforms, or third-party data handling once information is shared for requested services.</p>
+        <h3 data-i18n="privacyTitle">Privacy Policy</h3>
+        <p data-i18n="privacyBody">By submitting inquiries or registering in the Client Portal, you authorize Zhaoma International to collect, store, and process your account and inquiry details (including name, company, email, and service requests) across borders and share relevant details with vetted partners, institutions, suppliers, or service providers as needed to evaluate or coordinate requests. Zhaoma International is not responsible for third-party websites, external platforms, or third-party data handling once information is shared for requested services.</p>
       </div>
       <div class="card" id="refund" style="margin-top: 25px;">
-        <h3>Refund Policy</h3>
-        <p>All payments, retainers, consultation or service fees, and approved digital or bank transfers are strictly non-refundable once work begins, resources or time are allocated, or funds are disbursed or committed to third parties, institutions, or suppliers. Any cancellation, pause, or exception is solely at Zhaoma International's discretion, and any approved adjustment excludes third-party fees, transaction costs, currency or exchange differences, and completed work.</p>
+        <h3 data-i18n="refundTitle">Refund Policy</h3>
+        <p data-i18n="refundBody">All payments, retainers, consultation or service fees, and approved digital or bank transfers are strictly non-refundable once work begins, resources or time are allocated, or funds are disbursed or committed to third parties, institutions, or suppliers. Any cancellation, pause, or exception is solely at Zhaoma International's discretion, and any approved adjustment excludes third-party fees, transaction costs, currency or exchange differences, and completed work.</p>
       </div>
     </div>
   </section>
@@ -525,145 +538,844 @@
     <div class="container footer-grid">
       <div>
         <h3>Zhaoma International</h3>
-        <p>Building Trusted Bridges Between China, Africa, and Global Markets</p>
+        <p data-i18n="heroTitle">Building Trusted Bridges Between China, Africa, and Global Markets</p>
       </div>
       <div>
-        <h3>Resources</h3>
-        <p><a href="#company">Company Profile</a></p>
-        <p><a href="#overview">Corporate Overview</a></p>
+        <h3 data-i18n="footerResources">Resources</h3>
+        <p><a href="#company" data-i18n="companyTitle">Company Profile</a></p>
+        <p><a href="#overview" data-i18n="overviewTitle">Corporate Overview</a></p>
       </div>
       <div>
-        <h3>Policies</h3>
-        <p><a href="#terms">Terms</a></p>
-        <p><a href="#privacy">Privacy</a></p>
-        <p><a href="#refund">Refund Policy</a></p>
+        <h3 data-i18n="policiesTitle">Policies</h3>
+        <p><a href="#terms" data-i18n="termsShort">Terms</a></p>
+        <p><a href="#privacy" data-i18n="privacyShort">Privacy</a></p>
+        <p><a href="#refund" data-i18n="refundTitle">Refund Policy</a></p>
       </div>
     </div>
   </footer>
 
-  <a class="live-chat" href="https://wa.me/8613116781815" target="_blank" rel="noopener noreferrer">💬 Live Support</a>
+  <a class="live-chat" href="https://wa.me/8613116781815" target="_blank" rel="noopener noreferrer" data-i18n="liveSupport">💬 Live Support</a>
 
   <script type="module">
     import { supabase } from './supabaseClient.js';
 
-    const translations = {
+    const STORAGE_LANG_KEY = 'zhaoma_selected_lang';
+
+    const TRANSLATIONS = {
       en: {
         label: 'English',
+        dir: 'ltr',
+        statusTemplate: 'Displaying key sections in English.',
+        navServices: 'Services',
+        navCompany: 'Company',
+        navLanguages: 'Languages',
+        navPortal: 'Client Portal',
+        navContact: 'Contact',
         heroTitle: 'Building Trusted Bridges Between China, Africa, and Global Markets',
         heroDesc: 'Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.',
+        ctaAdvisor: 'Talk to an Advisor',
+        ctaOverview: 'Company Overview',
         servicesTitle: 'Our Services',
+        servicesIntro: 'Helping individuals and organizations access opportunities across education, trade, procurement, payments, tourism and business development.',
+        svc1Title: '🎓 Education Services',
+        svc1Desc: 'University admissions, scholarships, study abroad support and academic partnerships.',
+        svc2Title: '🏭 Procurement & Sourcing',
+        svc2Desc: 'Supplier sourcing, factory identification, procurement support and supplier verification.',
+        svc3Title: '💼 Business Development',
+        svc3Desc: 'Partnership facilitation, market entry support and trade opportunities.',
+        svc4Title: '💰 Supplier Payment Assistance',
+        svc4Desc: 'Support for approved supplier payment coordination and transaction assistance.',
+        svc5Title: '₮ Digital Payment Options',
+        svc5Html: 'Approved transactions may support:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Tourism & Cultural Exchange',
+        svc6Desc: 'Business tours, cultural exchange programs and international travel support.',
         companyTitle: 'Company Profile',
-        portalTitle: 'Client Portal'
+        companyIntro: 'We simplify access to educational, commercial, procurement, and cultural opportunities through trusted relationships, transparent communication, and professional support.',
+        missionTitle: 'Mission',
+        missionDesc: 'To connect people, businesses, and institutions with meaningful opportunities in China through trusted partnerships and professional guidance.',
+        visionTitle: 'Vision',
+        visionDesc: 'To become a trusted international gateway for education, trade, procurement and cultural collaboration.',
+        valuesTitle: 'Core Values',
+        valuesHtml: 'Trust<br>Transparency<br>Professionalism<br>Integrity<br>Partnership',
+        overviewTitle: 'Corporate Overview',
+        overviewIntro: 'Zhaoma International operates at the intersection of: Education + Trade + Procurement + Technology + Cross-Border Services',
+        languagesTitle: 'Multilingual Support',
+        languagesIntro: 'Support framework designed for international and African markets.',
+        portalTitle: 'Client Portal',
+        portalIntro: 'Sign up or sign in to access your Zhaoma International client profile.',
+        labelFullName: 'Full Name (for sign-up)',
+        labelCompany: 'Company Name (for sign-up)',
+        labelEmail: 'Email',
+        labelPassword: 'Password',
+        btnLogin: 'Sign In',
+        btnSignup: 'Create Account',
+        profileHeading: 'Client Profile',
+        btnLogout: 'Sign Out',
+        portalReady: 'Ready to connect to Zhaoma Portal.',
+        contactTitle: 'Contact Us',
+        contactEmailTitle: 'Email',
+        contactChinaTitle: 'China Office',
+        contactNigeriaTitle: 'Nigeria Office',
+        policiesTitle: 'Policies',
+        policiesIntro: 'Governing terms, privacy practices, and refund rules for using Zhaoma International and its services.',
+        termsTitle: 'Terms of Service',
+        termsBody: 'All platform information, guidance, and facilitation across education, procurement, trade, business development, payment assistance, and cultural exchange are provided on an "as-is" and "as-available" basis without guarantee of admission, approval, supplier performance, or specific commercial outcomes. Zhaoma International reserves the right to accept, decline, suspend, or terminate any inquiry, account, or engagement at its sole discretion, update terms or offerings at any time, and limit liability to the fullest extent permitted by law.',
+        privacyTitle: 'Privacy Policy',
+        privacyBody: 'By submitting inquiries or registering in the Client Portal, you authorize Zhaoma International to collect, store, and process your account and inquiry details (including name, company, email, and service requests) across borders and share relevant details with vetted partners, institutions, suppliers, or service providers as needed to evaluate or coordinate requests. Zhaoma International is not responsible for third-party websites, external platforms, or third-party data handling once information is shared for requested services.',
+        refundTitle: 'Refund Policy',
+        refundBody: 'All payments, retainers, consultation or service fees, and approved digital or bank transfers are strictly non-refundable once work begins, resources or time are allocated, or funds are disbursed or committed to third parties, institutions, or suppliers. Any cancellation, pause, or exception is solely at Zhaoma International\'s discretion, and any approved adjustment excludes third-party fees, transaction costs, currency or exchange differences, and completed work.',
+        footerResources: 'Resources',
+        termsShort: 'Terms',
+        privacyShort: 'Privacy',
+        liveSupport: '💬 Live Support'
       },
       zh: {
         label: 'Chinese',
+        dir: 'ltr',
+        statusTemplate: '当前正在以中文显示主要版块内容。',
+        navServices: '服务项目',
+        navCompany: '公司简介',
+        navLanguages: '多语言支持',
+        navPortal: '客户门户',
+        navContact: '联系我们',
         heroTitle: '连接中国、非洲与全球市场的可信桥梁',
         heroDesc: '兆马国际是一个跨境机遇平台，连接个人、企业、机构与组织，推动中国、非洲及全球市场之间的教育、商贸、采购与文化交流。',
+        ctaAdvisor: '咨询顾问',
+        ctaOverview: '公司概览',
         servicesTitle: '我们的服务',
+        servicesIntro: '助力个人与机构对接教育、商贸、采购、支付结算、商务考察及业务拓展机会。',
+        svc1Title: '🎓 教育服务',
+        svc1Desc: '高校申请、奖学金指导、留学支持与学术合作对接。',
+        svc2Title: '🏭 采购与供应链寻源',
+        svc2Desc: '供应商寻源、工厂匹配、采购协助及供应商资质核查。',
+        svc3Title: '💼 商业拓展',
+        svc3Desc: '合作伙伴撮合、市场进入支持与国际贸易机会对接。',
+        svc4Title: '💰 供应商付款协助',
+        svc4Desc: '为获批交易提供供应商付款协调与资金流转协助。',
+        svc5Title: '₮ 数字支付选项',
+        svc5Html: '获批交易可支持：<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 旅游与文化交流',
+        svc6Desc: '商务考察团、文化交流项目及国际差旅支持。',
         companyTitle: '公司简介',
-        portalTitle: '客户门户'
+        companyIntro: '我们通过可信合作关系、透明沟通与专业服务，简化跨境教育、商贸、采购与文化交流路径。',
+        missionTitle: '使命',
+        missionDesc: '通过可信合作与专业指导，将个人、企业与机构与中国的高价值机遇连接起来。',
+        visionTitle: '愿景',
+        visionDesc: '成为连接教育、商贸、采购与文化合作的可信国际门户。',
+        valuesTitle: '核心价值观',
+        valuesHtml: '信任<br>透明<br>专业<br>诚信<br>共赢',
+        overviewTitle: '公司概览',
+        overviewIntro: '兆马国际聚焦于：教育 + 商贸 + 采购 + 科技 + 跨境服务',
+        languagesTitle: '多语言支持',
+        languagesIntro: '面向国际与非洲市场的多语言沟通支持框架。',
+        portalTitle: '客户门户',
+        portalIntro: '注册或登录以访问您的兆马国际客户档案。',
+        labelFullName: '姓名（注册时填写）',
+        labelCompany: '公司名称（注册时填写）',
+        labelEmail: '电子邮箱',
+        labelPassword: '密码',
+        btnLogin: '登录',
+        btnSignup: '创建账号',
+        profileHeading: '客户档案',
+        btnLogout: '退出登录',
+        portalReady: '已准备好连接兆马客户门户。',
+        contactTitle: '联系我们',
+        contactEmailTitle: '电子邮箱',
+        contactChinaTitle: '中国办公室',
+        contactNigeriaTitle: '尼日利亚办公室',
+        policiesTitle: '政策条款',
+        policiesIntro: '使用兆马国际平台及服务所适用的服务条款、隐私政策与退款规则。',
+        termsTitle: '服务条款',
+        termsBody: '本平台在教育、采购、商贸、商业拓展、支付协助及文化交流等领域提供的信息、指导与撮合服务均按“现状”与“可用状态”提供，不保证录取、审批、供应商履约或特定商业结果。兆马国际保留自行决定接受、拒绝、暂停或终止任何咨询、账户或合作的权利，并可随时更新条款或服务内容。',
+        privacyTitle: '隐私政策',
+        privacyBody: '提交咨询或在客户门户注册即表示您授权兆马国际跨境收集、存储并处理您的账户与咨询信息（包括姓名、公司、邮箱及服务需求），并在评估或协调需求时与审核合作方、院校、供应商或服务提供方共享必要信息。信息按需求提供给第三方后，第三方网站或平台的处理行为不由兆马国际负责。',
+        refundTitle: '退款政策',
+        refundBody: '一旦服务启动、资源或时间投入，或资金已向第三方、院校或供应商支付或承诺，所有付款、预付金、咨询或服务费及获批的数字或银行转账均不予退还。任何取消、暂停或例外均由兆马国际酌情决定，且获批调整不含第三方费用、交易成本、汇率差异及已完成工作。',
+        footerResources: '相关资源',
+        termsShort: '条款',
+        privacyShort: '隐私',
+        liveSupport: '💬 在线支持'
       },
       fr: {
         label: 'French',
+        dir: 'ltr',
+        statusTemplate: 'Affichage des sections clés en français.',
+        navServices: 'Services',
+        navCompany: 'Entreprise',
+        navLanguages: 'Langues',
+        navPortal: 'Portail Client',
+        navContact: 'Contact',
         heroTitle: 'Construire des ponts de confiance entre la Chine, l’Afrique et les marchés mondiaux',
         heroDesc: 'Zhaoma International est une plateforme transfrontalière reliant particuliers, entreprises, institutions et organisations aux opportunités éducatives, commerciales, d’approvisionnement et culturelles.',
+        ctaAdvisor: 'Parler à un Conseiller',
+        ctaOverview: 'Aperçu de l’Entreprise',
         servicesTitle: 'Nos Services',
+        servicesIntro: 'Aider les particuliers et organisations à accéder aux opportunités d’éducation, de commerce, d’approvisionnement, de paiement, de tourisme et de développement.',
+        svc1Title: '🎓 Services Éducatifs',
+        svc1Desc: 'Admissions universitaires, bourses, accompagnement d’études à l’étranger et partenariats académiques.',
+        svc2Title: '🏭 Approvisionnement & Sourcing',
+        svc2Desc: 'Recherche de fournisseurs, identification d’usines, soutien aux achats et vérification.',
+        svc3Title: '💼 Développement Commercial',
+        svc3Desc: 'Facilitation de partenariats, entrée sur le marché et opportunités commerciales.',
+        svc4Title: '💰 Assistance Paiement Fournisseur',
+        svc4Desc: 'Accompagnement pour la coordination des paiements fournisseurs approuvés.',
+        svc5Title: '₮ Options de Paiement Numérique',
+        svc5Html: 'Les transactions approuvées peuvent prendre en charge :<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Tourisme & Échange Culturel',
+        svc6Desc: 'Voyages d’affaires, programmes d’échange culturel et assistance voyage internationale.',
         companyTitle: 'Profil de l’Entreprise',
-        portalTitle: 'Portail Client'
+        companyIntro: 'Nous simplifions l’accès aux opportunités éducatives, commerciales et culturelles grâce à des relations de confiance et un appui professionnel.',
+        missionTitle: 'Mission',
+        missionDesc: 'Connecter personnes, entreprises et institutions aux opportunités en Chine grâce à des partenariats fiables.',
+        visionTitle: 'Vision',
+        visionDesc: 'Devenir une passerelle internationale de confiance pour l’éducation, le commerce et la culture.',
+        valuesTitle: 'Valeurs Fondamentales',
+        valuesHtml: 'Confiance<br>Transparence<br>Professionnalisme<br>Intégrité<br>Partenariat',
+        overviewTitle: 'Aperçu de l’Entreprise',
+        overviewIntro: 'Zhaoma International opère à l’intersection de : Éducation + Commerce + Approvisionnement + Technologie + Services Transfrontaliers',
+        languagesTitle: 'Support Multilingue',
+        languagesIntro: 'Cadre d’assistance conçu pour les marchés internationaux et africains.',
+        portalTitle: 'Portail Client',
+        portalIntro: 'Inscrivez-vous ou connectez-vous pour accéder à votre profil client Zhaoma International.',
+        labelFullName: 'Nom complet (pour inscription)',
+        labelCompany: 'Nom de l’entreprise (pour inscription)',
+        labelEmail: 'E-mail',
+        labelPassword: 'Mot de passe',
+        btnLogin: 'Connexion',
+        btnSignup: 'Créer un Compte',
+        profileHeading: 'Profil Client',
+        btnLogout: 'Déconnexion',
+        portalReady: 'Prêt à se connecter au Portail Zhaoma.',
+        contactTitle: 'Contactez-Nous',
+        contactEmailTitle: 'E-mail',
+        contactChinaTitle: 'Bureau en Chine',
+        contactNigeriaTitle: 'Bureau au Nigeria',
+        policiesTitle: 'Politiques',
+        policiesIntro: 'Conditions générales, confidentialité et règles de remboursement de Zhaoma International.',
+        termsTitle: 'Conditions d’Utilisation',
+        termsBody: 'Toutes les informations et facilitations proposées par Zhaoma International sont fournies « en l’état » sans garantie d’admission, d’approbation ou de résultat commercial spécifique.',
+        privacyTitle: 'Politique de Confidentialité',
+        privacyBody: 'En soumettant une demande ou en créant un compte, vous autorisez Zhaoma International à traiter vos informations et à les partager avec des partenaires ou institutions concernés.',
+        refundTitle: 'Politique de Remboursement',
+        refundBody: 'Les paiements, acomptes et frais approuvés ne sont pas remboursables une fois le travail engagé ou les fonds alloués.',
+        footerResources: 'Ressources',
+        termsShort: 'Conditions',
+        privacyShort: 'Confidentialité',
+        liveSupport: '💬 Support en Direct'
       },
       es: {
         label: 'Spanish',
+        dir: 'ltr',
+        statusTemplate: 'Mostrando secciones clave en español.',
+        navServices: 'Servicios',
+        navCompany: 'Empresa',
+        navLanguages: 'Idiomas',
+        navPortal: 'Portal de Clientes',
+        navContact: 'Contacto',
         heroTitle: 'Construyendo puentes de confianza entre China, África y los mercados globales',
         heroDesc: 'Zhaoma International es una plataforma transfronteriza que conecta a personas, empresas, instituciones y organizaciones con oportunidades educativas, comerciales, de compras e intercambio cultural.',
+        ctaAdvisor: 'Hablar con un Asesor',
+        ctaOverview: 'Resumen Corporativo',
         servicesTitle: 'Nuestros Servicios',
+        servicesIntro: 'Ayudamos a personas y organizaciones a acceder a oportunidades en educación, comercio, compras, pagos y desarrollo.',
+        svc1Title: '🎓 Servicios Educativos',
+        svc1Desc: 'Admisiones universitarias, becas, apoyo para estudiar en el extranjero y alianzas académicas.',
+        svc2Title: '🏭 Compras y Abastecimiento',
+        svc2Desc: 'Búsqueda de proveedores, identificación de fábricas y verificación.',
+        svc3Title: '💼 Desarrollo de Negocios',
+        svc3Desc: 'Facilitación de alianzas, entrada al mercado y oportunidades comerciales.',
+        svc4Title: '💰 Asistencia de Pago a Proveedores',
+        svc4Desc: 'Apoyo en la coordinación de pagos aprobados a proveedores y transacciones.',
+        svc5Title: '₮ Opciones de Pago Digital',
+        svc5Html: 'Las transacciones aprobadas pueden admitir:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Turismo e Intercambio Cultural',
+        svc6Desc: 'Viajes de negocios, programas de intercambio cultural y apoyo internacional.',
         companyTitle: 'Perfil de la Empresa',
-        portalTitle: 'Portal de Clientes'
+        companyIntro: 'Simplificamos el acceso a oportunidades educativas, comerciales y culturales mediante relaciones de confianza.',
+        missionTitle: 'Misión',
+        missionDesc: 'Conectar personas, empresas e instituciones con oportunidades en China mediante alianzas confiables.',
+        visionTitle: 'Visión',
+        visionDesc: 'Convertirnos en una puerta internacional confiable para la educación, el comercio y la cultura.',
+        valuesTitle: 'Valores Fundamentales',
+        valuesHtml: 'Confianza<br>Transparencia<br>Profesionalismo<br>Integridad<br>Alianza',
+        overviewTitle: 'Resumen Corporativo',
+        overviewIntro: 'Zhaoma International opera en la intersección de: Educación + Comercio + Compras + Tecnología + Servicios Transfronterizos',
+        languagesTitle: 'Soporte Multilingüe',
+        languagesIntro: 'Marco de soporte diseñado para mercados internacionales y africanos.',
+        portalTitle: 'Portal de Clientes',
+        portalIntro: 'Regístrese o inicie sesión para acceder a su perfil de cliente de Zhaoma International.',
+        labelFullName: 'Nombre completo (para registro)',
+        labelCompany: 'Nombre de la empresa (para registro)',
+        labelEmail: 'Correo electrónico',
+        labelPassword: 'Contraseña',
+        btnLogin: 'Iniciar Sesión',
+        btnSignup: 'Crear Cuenta',
+        profileHeading: 'Perfil del Cliente',
+        btnLogout: 'Cerrar Sesión',
+        portalReady: 'Listo para conectar con el Portal Zhaoma.',
+        contactTitle: 'Contáctenos',
+        contactEmailTitle: 'Correo electrónico',
+        contactChinaTitle: 'Oficina en China',
+        contactNigeriaTitle: 'Oficina en Nigeria',
+        policiesTitle: 'Políticas',
+        policiesIntro: 'Términos, privacidad y reglas de reembolso de Zhaoma International.',
+        termsTitle: 'Términos del Servicio',
+        termsBody: 'La información y facilitación de la plataforma se ofrecen tal como están, sin garantizar admisiones, aprobaciones ni resultados comerciales específicos.',
+        privacyTitle: 'Política de Privacidad',
+        privacyBody: 'Al enviar consultas o registrarse, autoriza a Zhaoma International a procesar sus datos y compartirlos con socios o instituciones pertinentes.',
+        refundTitle: 'Política de Reembolso',
+        refundBody: 'Los pagos y tarifas aprobadas no son reembolsables una vez iniciado el trabajo o comprometidos los recursos.',
+        footerResources: 'Recursos',
+        termsShort: 'Términos',
+        privacyShort: 'Privacidad',
+        liveSupport: '💬 Soporte en Vivo'
       },
       pt: {
         label: 'Portuguese',
+        dir: 'ltr',
+        statusTemplate: 'Exibindo seções principais em português.',
+        navServices: 'Serviços',
+        navCompany: 'Empresa',
+        navLanguages: 'Idiomas',
+        navPortal: 'Portal do Cliente',
+        navContact: 'Contato',
         heroTitle: 'Construindo pontes de confiança entre a China, a África e os mercados globais',
-        heroDesc: 'A Zhaoma International é uma plataforma transfrontaliça que conecta pessoas, empresas, instituições e organizações a oportunidades educacionais, comerciais, de compras e intercâmbio cultural.',
+        heroDesc: 'A Zhaoma International é uma plataforma transfronteiriça que conecta pessoas, empresas, instituições e organizações a oportunidades educacionais, comerciais, de compras e intercâmbio cultural.',
+        ctaAdvisor: 'Falar com um Consultor',
+        ctaOverview: 'Visão Geral da Empresa',
         servicesTitle: 'Nossos Serviços',
+        servicesIntro: 'Ajudando pessoas e organizações a acessar oportunidades em educação, comércio, compras, pagamentos e negócios.',
+        svc1Title: '🎓 Serviços Educacionais',
+        svc1Desc: 'Admissões universitárias, bolsas de estudo, apoio no exterior e parcerias acadêmicas.',
+        svc2Title: '🏭 Compras e Sourcing',
+        svc2Desc: 'Busca de fornecedores, identificação de fábricas e verificação.',
+        svc3Title: '💼 Desenvolvimento de Negócios',
+        svc3Desc: 'Facilitação de parcerias, entrada no mercado e oportunidades comerciais.',
+        svc4Title: '💰 Assistência a Pagamentos a Fornecedores',
+        svc4Desc: 'Apoio na coordenação de pagamentos aprovados a fornecedores.',
+        svc5Title: '₮ Opções de Pagamento Digital',
+        svc5Html: 'Transações aprovadas podem suportar:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Turismo e Intercâmbio Cultural',
+        svc6Desc: 'Viagens de negócios, intercâmbio cultural e apoio internacional.',
         companyTitle: 'Perfil da Empresa',
-        portalTitle: 'Portal do Cliente'
+        companyIntro: 'Simplificamos o acesso a oportunidades educacionais, comerciais e culturais com confiança e transparência.',
+        missionTitle: 'Missão',
+        missionDesc: 'Conectar pessoas, empresas e instituições a oportunidades na China por meio de parcerias confiáveis.',
+        visionTitle: 'Visão',
+        visionDesc: 'Tornar-se uma ponte internacional confiável para educação, comércio e cultura.',
+        valuesTitle: 'Valores Fundamentais',
+        valuesHtml: 'Confiança<br>Transparência<br>Profissionalismo<br>Integridade<br>Parceria',
+        overviewTitle: 'Visão Geral Corporativa',
+        overviewIntro: 'Zhaoma International atua na interseção de: Educação + Comércio + Compras + Tecnologia + Serviços Transfronteiriços',
+        languagesTitle: 'Suporte Multilíngue',
+        languagesIntro: 'Estrutura de suporte voltada para mercados internacionais e africanos.',
+        portalTitle: 'Portal do Cliente',
+        portalIntro: 'Cadastre-se ou entre para acessar seu perfil de cliente da Zhaoma International.',
+        labelFullName: 'Nome completo (para cadastro)',
+        labelCompany: 'Nome da empresa (para cadastro)',
+        labelEmail: 'E-mail',
+        labelPassword: 'Senha',
+        btnLogin: 'Entrar',
+        btnSignup: 'Criar Conta',
+        profileHeading: 'Perfil do Cliente',
+        btnLogout: 'Sair',
+        portalReady: 'Pronto para conectar ao Portal Zhaoma.',
+        contactTitle: 'Fale Conosco',
+        contactEmailTitle: 'E-mail',
+        contactChinaTitle: 'Escritório na China',
+        contactNigeriaTitle: 'Escritório na Nigéria',
+        policiesTitle: 'Políticas',
+        policiesIntro: 'Termos, privacidade e regras de reembolso da Zhaoma International.',
+        termsTitle: 'Termos de Serviço',
+        termsBody: 'As informações e mediações da plataforma são fornecidas no estado em que se encontram, sem garantia de aprovação ou resultado comercial específico.',
+        privacyTitle: 'Política de Privacidade',
+        privacyBody: 'Ao enviar solicitações ou cadastrar-se, você autoriza o tratamento dos seus dados e o compartilhamento com parceiros ou instituições relevantes.',
+        refundTitle: 'Política de Reembolso',
+        refundBody: 'Pagamentos e taxas aprovadas não são reembolsáveis após o início dos serviços ou alocação de recursos.',
+        footerResources: 'Recursos',
+        termsShort: 'Termos',
+        privacyShort: 'Privacidade',
+        liveSupport: '💬 Suporte ao Vivo'
       },
       ar: {
         label: 'Arabic',
+        dir: 'rtl',
+        statusTemplate: 'يتم الآن عرض الأقسام الرئيسية باللغة العربية.',
+        navServices: 'الخدمات',
+        navCompany: 'الشركة',
+        navLanguages: 'اللغات',
+        navPortal: 'بوابة العملاء',
+        navContact: 'اتصل بنا',
         heroTitle: 'بناء جسور موثوقة بين الصين وأفريقيا والأسواق العالمية',
         heroDesc: 'زاوما إنترناشونال منصة عابرة للحدود تربط الأفراد والشركات والمؤسسات بفرص التعليم والتجارة والمشتريات والتبادل الثقافي بين الصين وأفريقيا والعالم.',
+        ctaAdvisor: 'تحدث مع مستشار',
+        ctaOverview: 'نظرة عامة على الشركة',
         servicesTitle: 'خدماتنا',
+        servicesIntro: 'مساعدة الأفراد والمؤسسات على الوصول إلى فرص التعليم والتجارة والمشتريات والمدفوعات وتطوير الأعمال.',
+        svc1Title: '🎓 خدمات التعليم',
+        svc1Desc: 'القبول الجامعي والمنح الدراسية ودعم الدراسة بالخارج والشراكات الأكاديمية.',
+        svc2Title: '🏭 المشتريات والتوريد',
+        svc2Desc: 'البحث عن الموردين وتحديد المصانع ودعم المشتريات والتحقق.',
+        svc3Title: '💼 تطوير الأعمال',
+        svc3Desc: 'تسهيل الشراكات ودعم دخول الأسواق والفرص التجارية.',
+        svc4Title: '💰 مساعدة سداد الموردين',
+        svc4Desc: 'دعم تنسيق مدفوعات الموردين المعتمدة وتسهيل المعاملات.',
+        svc5Title: '₮ خيارات الدفع الرقمية',
+        svc5Html: 'قد تدعم المعاملات المعتمدة:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 السياحة والتبادل الثقافي',
+        svc6Desc: 'الجولات التجارية وبرامج التبادل الثقافي ودعم السفر الدولي.',
         companyTitle: 'نبذة عن الشركة',
-        portalTitle: 'بوابة العملاء'
+        companyIntro: 'نبسّط الوصول إلى فرص التعليم والتجارة والثقافة عبر علاقات موثوقة وتواصل شفاف.',
+        missionTitle: 'الرسالة',
+        missionDesc: 'ربط الأفراد والشركات والمؤسسات بالفرص في الصين عبر شراكات موثوقة وتوجيه مهني.',
+        visionTitle: 'الرؤية',
+        visionDesc: 'أن نصبح بوابة دولية موثوقة للتعليم والتجارة والتعاون الثقافي.',
+        valuesTitle: 'القيم الأساسية',
+        valuesHtml: 'الثقة<br>الشفافية<br>الاحترافية<br>النزاهة<br>الشراكة',
+        overviewTitle: 'نظرة عامة مؤسسية',
+        overviewIntro: 'تعمل زاوما إنترناشونال عند تقاطع: التعليم + التجارة + المشتريات + التكنولوجيا + الخدمات العابرة للحدود',
+        languagesTitle: 'الدعم متعدد اللغات',
+        languagesIntro: 'إطار دعم مصمم للأسواق الدولية والأفريقية.',
+        portalTitle: 'بوابة العملاء',
+        portalIntro: 'أنشئ حساباً أو سجّل الدخول للوصول إلى ملف العميل الخاص بك في زاوما إنترناشونال.',
+        labelFullName: 'الاسم الكامل (للتسجيل)',
+        labelCompany: 'اسم الشركة (للتسجيل)',
+        labelEmail: 'البريد الإلكتروني',
+        labelPassword: 'كلمة المرور',
+        btnLogin: 'تسجيل الدخول',
+        btnSignup: 'إنشاء حساب',
+        profileHeading: 'ملف العميل',
+        btnLogout: 'تسجيل الخروج',
+        portalReady: 'جاهز للاتصال ببوابة زاوما.',
+        contactTitle: 'اتصل بنا',
+        contactEmailTitle: 'البريد الإلكتروني',
+        contactChinaTitle: 'مكتب الصين',
+        contactNigeriaTitle: 'مكتب نيجيريا',
+        policiesTitle: 'السياسات',
+        policiesIntro: 'الشروط والخصوصية وقواعد الاسترداد الخاصة بزاوما إنترناشونال.',
+        termsTitle: 'شروط الخدمة',
+        termsBody: 'تُقدّم خدمات ومعلومات المنصة كما هي دون ضمان القبول أو الموافقة أو نتائج تجارية محددة.',
+        privacyTitle: 'سياسة الخصوصية',
+        privacyBody: 'بإرسال الطلبات أو التسجيل، فإنك تفوّض زاوما إنترناشونال بمعالجة بياناتك ومشاركتها مع الشركاء أو الجهات المعنية عند الحاجة.',
+        refundTitle: 'سياسة الاسترداد',
+        refundBody: 'المدفوعات والرسوم المعتمدة غير قابلة للاسترداد بمجرد بدء العمل أو تخصيص الموارد.',
+        footerResources: 'الموارد',
+        termsShort: 'الشروط',
+        privacyShort: 'الخصوصية',
+        liveSupport: '💬 الدعم المباشر'
       },
       yo: {
         label: 'Yoruba',
+        dir: 'ltr',
+        statusTemplate: 'À ń fi àwọn abala pàtàkì hàn ní èdè Yorùbá.',
+        navServices: 'Àwọn Iṣẹ́',
+        navCompany: 'Ilé-Iṣẹ́',
+        navLanguages: 'Àwọn Èdè',
+        navPortal: 'Àgbègbè Oníbàárà',
+        navContact: 'Kàn Sí Wa',
         heroTitle: 'Kíkọ́ àwọn afárá ìgbẹ́kẹ̀lé láàárín Ṣáínà, Áfíríkà àti àwọn ọjà àgbáyé',
         heroDesc: 'Zhaoma International jẹ́ pẹpẹ ìṣọ̀kan àgbáyé tí ń so àwọn ènìyàn, ilé-iṣẹ́ àti àjọ pọ̀ mọ́ àǹfààní ẹ̀kọ́, ìṣòwò, ríra ọjà àti àṣà.',
+        ctaAdvisor: 'Bá Olùdámọ̀ràn Sọ̀rọ̀',
+        ctaOverview: 'Àkópọ̀ Ilé-Iṣẹ́',
         servicesTitle: 'Àwọn Iṣẹ́ Wa',
+        servicesIntro: 'Ríran àwọn ènìyàn àti àjọ lọ́wọ́ láti rí àǹfààní nínú ẹ̀kọ́, ìṣòwò, ríra ọjà, ìsanwó àti ìdàgbàsókè.',
+        svc1Title: '🎓 Àwọn Iṣẹ́ Ẹ̀kọ́',
+        svc1Desc: 'Ìwọlé yunifásítì, ìwé-ẹ̀kọ́ ọ̀fẹ́, ìrànlọ́wọ́ ìkẹ́kọ̀ọ́ lókè-òkun àti ìbáṣepọ̀ ẹ̀kọ́.',
+        svc2Title: '🏭 Ríra Ọjà àti Ìwádìí',
+        svc2Desc: 'Wíwá àwọn olùpèsè, ìdámọ̀ ilé-iṣẹ́ àti àyẹ̀wò olùpèsè.',
+        svc3Title: '💼 Ìdàgbàsókè Iṣẹ́ Ajé',
+        svc3Desc: 'Ìṣètò ìbáṣepọ̀, ìwọlé ọjà àti àǹfààní ìṣòwò.',
+        svc4Title: '💰 Ìrànlọ́wọ́ Ìsanwó Olùpèsè',
+        svc4Desc: 'Ìrànlọ́wọ́ fún ìṣètò ìsanwó olùpèsè tí a fọwọ́ sí.',
+        svc5Title: '₮ Àṣàyàn Ìsanwó Orí-Ayélujára',
+        svc5Html: 'Àwọn ìṣòwò tí a fọwọ́ sí lè ṣe àtìlẹ́yìn fún:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Ìrìn-Àjò àti Ìṣàfihàn Àṣà',
+        svc6Desc: 'Ìrìn-àjò iṣẹ́ ajé, ètò pàṣípààrọ̀ àṣà àti ìrànlọ́wọ́ ìrìn-àjò àgbáyé.',
         companyTitle: 'Ìròyìn Ilé-Iṣẹ́',
-        portalTitle: 'Àgbègbè Oníbàárà'
+        companyIntro: 'A ń mú kí ìwọlé sí àǹfààní ẹ̀kọ́, ìṣòwò àti àṣà rọrùn nípasẹ̀ ìgbẹ́kẹ̀lé àti ìfọ̀rọ̀wérọ̀ tó péye.',
+        missionTitle: 'Ète Iṣẹ́',
+        missionDesc: 'Láti so àwọn ènìyàn, ilé-iṣẹ́ àti àjọ pọ̀ mọ́ àǹfààní ní Ṣáínà nípasẹ̀ ìbáṣepọ̀ tó ṣeé gbẹ́kẹ̀lé.',
+        visionTitle: 'Ìran',
+        visionDesc: 'Láti di ẹnu-ọ̀nà àgbáyé tó ṣeé gbẹ́kẹ̀lé fún ẹ̀kọ́, ìṣòwò àti ìfọwọ́sowọ́pọ̀ àṣà.',
+        valuesTitle: 'Àwọn Ìlànà Pàtàkì',
+        valuesHtml: 'Ìgbẹ́kẹ̀lé<br>Ìfarahàn Gbangba<br>Ìmọ̀-Iṣẹ́<br>Ìwà-Mímọ́<br>Ìbáṣepọ̀',
+        overviewTitle: 'Àkópọ̀ Ilé-Iṣẹ́',
+        overviewIntro: 'Zhaoma International ń ṣiṣẹ́ ní ìṣọ̀kan: Ẹ̀kọ́ + Ìṣòwò + Ríra Ọjà + Ìmọ̀-Ẹ̀rọ + Iṣẹ́ Ààrin-Orílẹ̀-Èdè',
+        languagesTitle: 'Àtìlẹ́yìn Èdè Púpọ̀',
+        languagesIntro: 'Ètò àtìlẹ́yìn tí a ṣe fún àwọn ọjà àgbáyé àti Áfíríkà.',
+        portalTitle: 'Àgbègbè Oníbàárà',
+        portalIntro: 'Forúkọsílẹ̀ tàbí wọlé láti wọ àkọọlẹ oníbàárà Zhaoma International rẹ.',
+        labelFullName: 'Orúkọ kíkún (fún ìforúkọsílẹ̀)',
+        labelCompany: 'Orúkọ ilé-iṣẹ́ (fún ìforúkọsílẹ̀)',
+        labelEmail: 'Ímẹ́ẹ̀lì',
+        labelPassword: 'Ọ̀rọ̀ aṣínà',
+        btnLogin: 'Wọlé',
+        btnSignup: 'Dá Àkọọlẹ Sí lẹ̀',
+        profileHeading: 'Àkọọlẹ Oníbàárà',
+        btnLogout: 'Jáde',
+        portalReady: 'Ó ti ṣetán láti sopọ̀ mọ́ Zhaoma Portal.',
+        contactTitle: 'Kàn Sí Wa',
+        contactEmailTitle: 'Ímẹ́ẹ̀lì',
+        contactChinaTitle: 'Ọ́fíìsì Ṣáínà',
+        contactNigeriaTitle: 'Ọ́fíìsì Nàìjíríà',
+        policiesTitle: 'Àwọn Òfin',
+        policiesIntro: 'Àwọn òfin ìlò, ìpamọ́ àti ìdápadà owó fún Zhaoma International.',
+        termsTitle: 'Òfin Iṣẹ́',
+        termsBody: 'Gbogbo ìwífún àti ìrànlọ́wọ́ lórí pẹpẹ yìí wà gẹ́gẹ́ bí ó ṣe rí láìsí ìdánilójú ìgbàwọlé tàbí èrè pàtó kan.',
+        privacyTitle: 'Òfin Ìpamọ́',
+        privacyBody: 'Nípa fífiranṣẹ́ ìbéèrè tàbí ìforúkọsílẹ̀, o fún Zhaoma International ní àṣẹ láti lo àti pín ìwífún rẹ pẹ̀lú àwọn alábàáṣiṣẹpọ̀ tó yẹ.',
+        refundTitle: 'Òfin Ìdápadà Owó',
+        refundBody: 'Owó tí a san tí a sì fọwọ́ sí kì í ṣe èyí tí a lè dá padà nígbà tí iṣẹ́ bá ti bẹ̀rẹ̀ tàbí tí a ti ya owó sọ́tọ̀.',
+        footerResources: 'Àwọn Ohun Èlò',
+        termsShort: 'Àwọn Òfin',
+        privacyShort: 'Ìpamọ́',
+        liveSupport: '💬 Ìrànlọ́wọ́ Lẹ́sẹ̀kẹsẹ̀'
       },
       ig: {
         label: 'Igbo',
+        dir: 'ltr',
+        statusTemplate: 'Ana egosi ngalaba ndị bụ isi n’asụsụ Igbo.',
+        navServices: 'Ọrụ Anyị',
+        navCompany: 'Ụlọ Ọrụ',
+        navLanguages: 'Asụsụ',
+        navPortal: 'Ọnụ Ụzọ Ndị Ahịa',
+        navContact: 'Kpọtụrụ Anyị',
         heroTitle: 'Iwulite àkwà mmiri ntụkwasị obi n’etiti China, Africa na ahịa ụwa',
         heroDesc: 'Zhaoma International bụ ikpo okwu na-ejikọ ndị mmadụ, azụmahịa na ụlọ ọrụ na ohere agụmakwụkwọ, azụmahịa, ịzụ ahịa na omenala.',
+        ctaAdvisor: 'Gwa Onye Ndụmọdụ Okwu',
+        ctaOverview: 'Nkọwa Ụlọ Ọrụ',
         servicesTitle: 'Ọrụ Anyị',
+        servicesIntro: 'Inyere ndị mmadụ na ụlọ ọrụ aka ịnweta ohere n’agụmakwụkwọ, azụmahịa, ịzụ ahịa na ịkwụ ụgwọ.',
+        svc1Title: '🎓 Ọrụ Agụmakwụkwọ',
+        svc1Desc: 'Nbanye mahadum, agụmakwụkwọ n’efu, nkwado ịgụ akwụkwọ na mba ọzọ na mmekọrịta agụmakwụkwọ.',
+        svc2Title: '🏭 Ịzụ Ahịa na Ịchọta Ngwaahịa',
+        svc2Desc: 'Ịchọta ndị na-ebubata ngwaahịa, ịchọpụta ụlọ mmepụta ihe na nyocha.',
+        svc3Title: '💼 Mmepe Azụmahịa',
+        svc3Desc: 'Ikwado mmekọrịta, ịbanye n’ahịa na ohere azụmahịa.',
+        svc4Title: '💰 Enyemaka Ịkwụ Ụgwọ Ndị Na-ebubata Ngwaahịa',
+        svc4Desc: 'Nkwado maka nhazi ụgwọ ndị a kwadoro na njem azụmahịa.',
+        svc5Title: '₮ Nhọrọ Ịkwụ Ụgwọ Dijitalụ',
+        svc5Html: 'Azụmahịa ndị a kwadoro nwere ike ịkwado:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Njem Nleta na Mgbanwe Omenala',
+        svc6Desc: 'Njem azụmahịa, mmemme mgbanwe omenala na nkwado njem mba ụwa.',
         companyTitle: 'Nkọwa Ụlọ Ọrụ',
-        portalTitle: 'Ọnụ Ụzọ Ndị Ahịa'
+        companyIntro: 'Anyị na-eme ka ohere agụmakwụkwọ, azụmahịa na omenala dị mfe site na ntụkwasị obi na nkwado ọkachamara.',
+        missionTitle: 'Ebumnuche',
+        missionDesc: 'Ijikọ ndị mmadụ, azụmahịa na ụlọ ọrụ na ohere bara uru na China site na mmekọrịta a pụrụ ịtụkwasị obi.',
+        visionTitle: 'Ọhụụ',
+        visionDesc: 'Ịghọ ọnụ ụzọ mba ụwa a pụrụ ịtụkwasị obi maka agụmakwụkwọ, azụmahịa na omenala.',
+        valuesTitle: 'Ụkpụrụ Isi',
+        valuesHtml: 'Ntụkwasị obi<br>Nghọta<br>Ọkachamara<br>Iguzosi ike n’ezi ihe<br>Mmekọrịta',
+        overviewTitle: 'Nkọwa Ụlọ Ọrụ',
+        overviewIntro: 'Zhaoma International na-arụ ọrụ na njikọ nke: Agụmakwụkwọ + Azụmahịa + Ịzụ Ahịa + Teknụzụ + Ọrụ Mba Ụwa',
+        languagesTitle: 'Nkwado Asụsụ Dị Iche Iche',
+        languagesIntro: 'Usoro nkwado e mere maka ahịa mba ụwa na nke Africa.',
+        portalTitle: 'Ọnụ Ụzọ Ndị Ahịa',
+        portalIntro: 'Debanye aha ma ọ bụ banye iji nweta profaịlụ onye ahịa Zhaoma International gị.',
+        labelFullName: 'Aha zuru ezu (maka ndebanye aha)',
+        labelCompany: 'Aha ụlọ ọrụ (maka ndebanye aha)',
+        labelEmail: 'Email',
+        labelPassword: 'Paswọọdụ',
+        btnLogin: 'Banye',
+        btnSignup: 'Mepụta Akaụntụ',
+        profileHeading: 'Profaịlụ Onye Ahịa',
+        btnLogout: 'Pụọ',
+        portalReady: 'Ọ dị njikere ijikọ na Zhaoma Portal.',
+        contactTitle: 'Kpọtụrụ Anyị',
+        contactEmailTitle: 'Email',
+        contactChinaTitle: 'Ụlọ Ọrụ China',
+        contactNigeriaTitle: 'Ụlọ Ọrụ Nigeria',
+        policiesTitle: 'Amụma',
+        policiesIntro: 'Usoro, nzuzo na iwu nkwụghachi ego nke Zhaoma International.',
+        termsTitle: 'Usoro Ọrụ',
+        termsBody: 'A na-enye ozi na enyemaka niile dịka ha dị n’enweghị nkwa nnabata ma ọ bụ nsonaazụ azụmahịa pụrụ iche.',
+        privacyTitle: 'Amụma Nzuzo',
+        privacyBody: 'Site na iziga ajụjụ ma ọ bụ ịdebanye aha, ị na-enye Zhaoma International ikike iji data gị mee ihe ma kesaa ya ndị mmekọ dị mkpa.',
+        refundTitle: 'Amụma Nkwụghachi Ego',
+        refundBody: 'A naghị akwụghachi ụgwọ ndị a kwadoro ozugbo ọrụ malitere ma ọ bụ e kenyere ego.',
+        footerResources: 'Akụrụngwa',
+        termsShort: 'Usoro',
+        privacyShort: 'Nzuzo',
+        liveSupport: '💬 Enyemaka Dị Ndụ'
       },
       ha: {
         label: 'Hausa',
+        dir: 'ltr',
+        statusTemplate: 'Ana nuna manyan sassa cikin harshen Hausa.',
+        navServices: 'Ayyuka',
+        navCompany: 'Kamfani',
+        navLanguages: 'Harsuna',
+        navPortal: 'Shafin Abokan Ciniki',
+        navContact: 'Tuntuɓe Mu',
         heroTitle: 'Gina gadoji na amana tsakanin Sin, Afirka da kasuwannin duniya',
         heroDesc: 'Zhaoma International dandali ne da ke haɗa daidaikun mutane, kasuwanci da cibiyoyi da damar ilimi, kasuwanci, sayo da musayar al’adu.',
+        ctaAdvisor: 'Yi Magana da Mai Ba da Shawara',
+        ctaOverview: 'Bayanin Kamfani',
         servicesTitle: 'Ayyukanmu',
+        servicesIntro: 'Taimaka wa daidaikun mutane da ƙungiyoyi wajen samun damar ilimi, kasuwanci, sayo, biyan kuɗi da ci gaba.',
+        svc1Title: '🎓 Ayyukan Ilimi',
+        svc1Desc: 'Shiga jami’a, tallafin karatu, karatu a ƙasashen waje da haɗin gwiwar ilimi.',
+        svc2Title: '🏭 Sayo da Samarwa',
+        svc2Desc: 'Neman masu samarwa, gano masana’antu da tabbatar da inganci.',
+        svc3Title: '💼 Ci Gaban Kasuwanci',
+        svc3Desc: 'Sauƙaƙa haɗin gwiwa, shiga kasuwa da damar kasuwanci.',
+        svc4Title: '💰 Taimakon Biyan Masu Samarwa',
+        svc4Desc: 'Tallafi wajen daidaita biyan kuɗi ga masu samarwa da aka amince da su.',
+        svc5Title: '₮ Zaɓuɓɓukan Biyan Kuɗi na Dijital',
+        svc5Html: 'Ma’amaloli da aka amince na iya tallafawa:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Yawon Buɗe Ido da Musayar Al’adu',
+        svc6Desc: 'Ziyarar kasuwanci, shirye-shiryen musayar al’adu da tallafin tafiye-tafiye na ƙasa da ƙasa.',
         companyTitle: 'Bayanan Kamfani',
-        portalTitle: 'Shafin Abokan Ciniki'
+        companyIntro: 'Muna sauƙaƙa samun damar ilimi, kasuwanci da al’adu ta hanyar amana da bayyana gaskiya.',
+        missionTitle: 'Manufa',
+        missionDesc: 'Haɗa mutane, kasuwanci da cibiyoyi da damar da ke da ma’ana a Sin ta hanyar amintacciyar haɗin gwiwa.',
+        visionTitle: 'Hangen Nesa',
+        visionDesc: 'Zama amintacciyar kofa ta ƙasa da ƙasa don ilimi, kasuwanci da haɗin gwiwar al’adu.',
+        valuesTitle: 'Dabi’u Masu Muhimmanci',
+        valuesHtml: 'Amana<br>Gaskiya<br>Ƙwarewa<br>Mutunci<br>Haɗin Gwiwa',
+        overviewTitle: 'Bayanin Kamfani',
+        overviewIntro: 'Zhaoma International tana aiki a haɗuwar: Ilimi + Kasuwanci + Sayo + Fasaha + Ayyukan Ƙasashen Duniya',
+        languagesTitle: 'Tallafin Harsuna Da Dama',
+        languagesIntro: 'Tsarin tallafi da aka tsara don kasuwannin duniya da na Afirka.',
+        portalTitle: 'Shafin Abokan Ciniki',
+        portalIntro: 'Yi rajista ko shiga don samun bayanan abokin ciniki na Zhaoma International.',
+        labelFullName: 'Cikakken suna (don rajista)',
+        labelCompany: 'Sunan kamfani (don rajista)',
+        labelEmail: 'Imel',
+        labelPassword: 'Kalmar sirri',
+        btnLogin: 'Shiga',
+        btnSignup: 'Ƙirƙiri Asusu',
+        profileHeading: 'Bayanan Abokin Ciniki',
+        btnLogout: 'Fita',
+        portalReady: 'A shirye don haɗawa da Zhaoma Portal.',
+        contactTitle: 'Tuntuɓe Mu',
+        contactEmailTitle: 'Imel',
+        contactChinaTitle: 'Ofishin Sin',
+        contactNigeriaTitle: 'Ofishin Najeriya',
+        policiesTitle: 'Manufofi',
+        policiesIntro: 'Sharudda, sirri da dokokin mayar da kuɗi na Zhaoma International.',
+        termsTitle: 'Sharuɗɗan Sabis',
+        termsBody: 'Ana bayar da bayanai da tallafin dandamali kamar yadda suke ba tare da garantin shiga ko sakamako na kasuwanci ba.',
+        privacyTitle: 'Manufar Sirri',
+        privacyBody: 'Ta hanyar aika buƙata ko yin rajista, kun ba Zhaoma International damar sarrafa bayananku da raba su da abokan hulɗa.',
+        refundTitle: 'Manufar Mayar da Kuɗi',
+        refundBody: 'Biyan kuɗi da kudaden da aka amince ba za a mayar da su ba da zarar an fara aiki ko an ware kuɗi.',
+        footerResources: 'Dabarun Tallafi',
+        termsShort: 'Sharuɗɗa',
+        privacyShort: 'Sirri',
+        liveSupport: '💬 Tallafin Kai Tsaye'
       },
       pcm: {
         label: 'Nigerian Pidgin',
+        dir: 'ltr',
+        statusTemplate: 'We dey show main parts for Nigerian Pidgin.',
+        navServices: 'Our Services',
+        navCompany: 'Company',
+        navLanguages: 'Languages',
+        navPortal: 'Client Portal',
+        navContact: 'Contact',
         heroTitle: 'We dey build trust bridge between China, Africa, and world markets',
         heroDesc: 'Zhaoma International na platform wey dey connect pipu, business, and organisations to school, trade, sourcing, and culture chances.',
+        ctaAdvisor: 'Talk to Advisor',
+        ctaOverview: 'Company Overview',
         servicesTitle: 'Our Services',
-        companyTitle: 'About Our Company',
-        portalTitle: 'Client Portal'
+        servicesIntro: 'We dey help pipu and organisation get chances for school, trade, sourcing, payment, and business growth.',
+        svc1Title: '🎓 School & Education Services',
+        svc1Desc: 'University admission, scholarship, study abroad help, and school partnership.',
+        svc2Title: '🏭 Sourcing & Procurement',
+        svc2Desc: 'Find supplier, locate factory, buy goods, and check supplier.',
+        svc3Title: '💼 Business Development',
+        svc3Desc: 'Connect partners, enter new market, and get trade deals.',
+        svc4Title: '💰 Supplier Payment Help',
+        svc4Desc: 'Help arrange approved payment to supplier and handle transaction.',
+        svc5Title: '₮ Digital Payment Options',
+        svc5Html: 'Approved deal fit use:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Tourism & Culture Exchange',
+        svc6Desc: 'Business trip, culture exchange programme, and travel support.',
+        companyTitle: 'Company Profile',
+        companyIntro: 'We dey make school, trade, and culture chances easy through trust, clear talk, and good support.',
+        missionTitle: 'Mission',
+        missionDesc: 'Connect pipu, business, and organisation to good chances for China through trusted partnership.',
+        visionTitle: 'Vision',
+        visionDesc: 'To be trusted international gate for school, trade, and culture link-up.',
+        valuesTitle: 'Our Core Values',
+        valuesHtml: 'Trust<br>Transparency<br>Professionalism<br>Integrity<br>Partnership',
+        overviewTitle: 'Corporate Overview',
+        overviewIntro: 'Zhaoma International dey work across: Education + Trade + Procurement + Technology + Cross-Border Services',
+        languagesTitle: 'Multilingual Support',
+        languagesIntro: 'Language support wey fit international and Africa markets.',
+        portalTitle: 'Client Portal',
+        portalIntro: 'Sign up or sign in to check your Zhaoma International client profile.',
+        labelFullName: 'Full Name (for sign-up)',
+        labelCompany: 'Company Name (for sign-up)',
+        labelEmail: 'Email',
+        labelPassword: 'Password',
+        btnLogin: 'Sign In',
+        btnSignup: 'Create Account',
+        profileHeading: 'Client Profile',
+        btnLogout: 'Sign Out',
+        portalReady: 'Ready to connect to Zhaoma Portal.',
+        contactTitle: 'Contact Us',
+        contactEmailTitle: 'Email',
+        contactChinaTitle: 'China Office',
+        contactNigeriaTitle: 'Nigeria Office',
+        policiesTitle: 'Policies',
+        policiesIntro: 'Rules for terms, privacy, and refund for Zhaoma International.',
+        termsTitle: 'Terms of Service',
+        termsBody: 'All info and help for this site dey as e be, with no guarantee for admission, approval, or business result.',
+        privacyTitle: 'Privacy Policy',
+        privacyBody: 'When you send request or register, you allow Zhaoma International use your info and share am with trusted partners when needed.',
+        refundTitle: 'Refund Policy',
+        refundBody: 'Money wey dem don approve no dey refundable once work don start or money don set aside.',
+        footerResources: 'Resources',
+        termsShort: 'Terms',
+        privacyShort: 'Privacy',
+        liveSupport: '💬 Live Support'
       },
       sw: {
         label: 'Swahili',
+        dir: 'ltr',
+        statusTemplate: 'Inaonyesha sehemu kuu kwa Kiswahili.',
+        navServices: 'Huduma',
+        navCompany: 'Kampuni',
+        navLanguages: 'Lugha',
+        navPortal: 'Tovuti ya Wateja',
+        navContact: 'Mawasiliano',
         heroTitle: 'Kujenga madaraja ya kuaminika kati ya China, Afrika na masoko ya dunia',
         heroDesc: 'Zhaoma International ni jukwaa linalounganisha watu binafsi, biashara na taasisi na fursa za elimu, biashara, ununuzi na utamaduni.',
+        ctaAdvisor: 'Zungumza na Mshauri',
+        ctaOverview: 'Muhtasari wa Kampuni',
         servicesTitle: 'Huduma Zetu',
+        servicesIntro: 'Kusaidia watu binafsi na mashirika kupata fursa za elimu, biashara, ununuzi, malipo na maendeleo.',
+        svc1Title: '🎓 Huduma za Elimu',
+        svc1Desc: 'Udahili wa vyuo vikuu, ufadhili wa masomo, usaidizi wa kusoma nje na ushirikiano wa kitaaluma.',
+        svc2Title: '🏭 Ununuzi na Utafutaji Bidhaa',
+        svc2Desc: 'Kutafuta wasambazaji, kutambua viwanda na uhakiki wa wasambazaji.',
+        svc3Title: '💼 Maendeleo ya Biashara',
+        svc3Desc: 'Kuwezesha ubia, kuingia sokoni na fursa za kibiashara.',
+        svc4Title: '💰 Msaada wa Malipo kwa Wasambazaji',
+        svc4Desc: 'Usaidizi wa kuratibu malipo yaliyoidhinishwa kwa wasambazaji.',
+        svc5Title: '₮ Chaguzi za Malipo ya Kidijitali',
+        svc5Html: 'Miamala iliyoidhinishwa inaweza kuunga mkono:<br><br>• USDT (Tether)<br>• Bitcoin (BTC)<br>• Ethereum (ETH)',
+        svc6Title: '🌏 Utalii na Ubadilishanaji wa Kitamaduni',
+        svc6Desc: 'Ziara za kibiashara, programu za utamaduni na usaidizi wa usafiri wa kimataifa.',
         companyTitle: 'Wasifu wa Kampuni',
-        portalTitle: 'Tovuti ya Wateja'
+        companyIntro: 'Tunarahisisha upatikanaji wa fursa za elimu, biashara na utamaduni kwa uaminifu na uwazi.',
+        missionTitle: 'Dhamira',
+        missionDesc: 'Kuunganisha watu, biashara na taasisi na fursa zenye maana nchini China kwa ubia wa kuaminika.',
+        visionTitle: 'Dira',
+        visionDesc: 'Kuwa lango la kimataifa linaloaminika kwa elimu, biashara na ushirikiano wa kitamaduni.',
+        valuesTitle: 'Maadili Makuu',
+        valuesHtml: 'Uaminifu<br>Uwazi<br>Utaalamu<br>Uadilifu<br>Ubia',
+        overviewTitle: 'Muhtasari wa Kampuni',
+        overviewIntro: 'Zhaoma International inafanya kazi katikati ya: Elimu + Biashara + Ununuzi + Teknolojia + Huduma za Kimataifa',
+        languagesTitle: 'Msaada wa Lugha Nyingi',
+        languagesIntro: 'Mfumo wa msaada ulioundwa kwa masoko ya kimataifa na ya Afrika.',
+        portalTitle: 'Tovuti ya Wateja',
+        portalIntro: 'Jisajili au ingia ili kufikia wasifu wako wa mteja wa Zhaoma International.',
+        labelFullName: 'Jina kamili (kwa kujisajili)',
+        labelCompany: 'Jina la kampuni (kwa kujisajili)',
+        labelEmail: 'Barua pepe',
+        labelPassword: 'Nenosiri',
+        btnLogin: 'Ingia',
+        btnSignup: 'Fungua Akaunti',
+        profileHeading: 'Wasifu wa Mteja',
+        btnLogout: 'Toka',
+        portalReady: 'Tayari kuunganisha na Zhaoma Portal.',
+        contactTitle: 'Wasiliana Nasi',
+        contactEmailTitle: 'Barua pepe',
+        contactChinaTitle: 'Ofisi ya China',
+        contactNigeriaTitle: 'Ofisi ya Nigeria',
+        policiesTitle: 'Sera',
+        policiesIntro: 'Masharti, faragha na sheria za kurejesha fedha za Zhaoma International.',
+        termsTitle: 'Masharti ya Huduma',
+        termsBody: 'Taarifa na huduma za jukwaa hutolewa kama zilivyo bila dhamana ya udahili, idhini au matokeo maalum ya kibiashara.',
+        privacyTitle: 'Sera ya Faragha',
+        privacyBody: 'Kwa kutuma maombi au kujisajili, unaruhusu Zhaoma International kuchakata taarifa zako na kuzishirikisha washirika husika.',
+        refundTitle: 'Sera ya Kurejesha Fedha',
+        refundBody: 'Malipo na ada zilizoidhinishwa hazirejeshwi mara tu kazi inapoanza au rasilimali zinapotengwa.',
+        footerResources: 'Rasilimali',
+        termsShort: 'Masharti',
+        privacyShort: 'Faragha',
+        liveSupport: '💬 Msaada wa Moja kwa Moja'
       }
     };
 
-    const langButtons = document.querySelectorAll('#lang-buttons .lang');
+    const langButtonsContainer = document.getElementById('lang-buttons');
+    const langButtons = Array.from(document.querySelectorAll('#lang-buttons .lang'));
     const langStatus = document.getElementById('lang-status');
-    const heroTitleEl = document.querySelector('.hero h1');
-    const heroDescEl = document.querySelector('.hero p');
-    const servicesTitleEl = document.querySelector('#services h2');
-    const companyTitleEl = document.querySelector('#company h2');
-    const portalTitleEl = document.querySelector('#portal h2');
 
-    langButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const code = btn.dataset.lang;
-        const data = translations[code] || translations.en;
+    function resolveTranslation(langCode) {
+      const normalized = String(langCode || 'en').toLowerCase().trim();
+      return TRANSLATIONS[normalized] || TRANSLATIONS.en;
+    }
 
-        langButtons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
+    function applyLanguage(langCode, persist = true) {
+      const pack = resolveTranslation(langCode);
+      const activeKey = TRANSLATIONS[String(langCode || 'en').toLowerCase().trim()]
+        ? String(langCode).toLowerCase().trim()
+        : 'en';
 
-        if (heroTitleEl) heroTitleEl.textContent = data.heroTitle;
-        if (heroDescEl) heroDescEl.textContent = data.heroDesc;
-        if (servicesTitleEl) servicesTitleEl.textContent = data.servicesTitle;
-        if (companyTitleEl) companyTitleEl.textContent = data.companyTitle;
-        if (portalTitleEl) portalTitleEl.textContent = data.portalTitle;
+      document.documentElement.lang = activeKey;
+      document.documentElement.dir = pack.dir || 'ltr';
 
-        if (langStatus) {
-          langStatus.textContent = `Displaying key sections in ${data.label}.`;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (key && Object.prototype.hasOwnProperty.call(pack, key)) {
+          el.textContent = pack[key];
         }
       });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (key && Object.prototype.hasOwnProperty.call(pack, key)) {
+          el.innerHTML = pack[key];
+        }
+      });
+
+      langButtons.forEach((btn) => {
+        const isMatch = btn.dataset.lang === activeKey;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-pressed', String(isMatch));
+      });
+
+      if (langStatus) {
+        langStatus.textContent = pack.statusTemplate || `Displaying key sections in ${pack.label}.`;
+      }
+
+      if (persist) {
+        try {
+          localStorage.setItem(STORAGE_LANG_KEY, activeKey);
+        } catch (_) {
+          // Ignore storage restrictions in private browsing modes
+        }
+      }
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        applyLanguage(btn.dataset.lang, true);
+      });
     });
+
+    langButtonsContainer?.addEventListener('click', (event) => {
+      const targetBtn = event.target.closest('.lang');
+      if (targetBtn && targetBtn.dataset.lang) {
+        applyLanguage(targetBtn.dataset.lang, true);
+      }
+    });
+
+    let initialLang = 'en';
+    try {
+      const saved = localStorage.getItem(STORAGE_LANG_KEY);
+      if (saved && TRANSLATIONS[saved]) {
+        initialLang = saved;
+      }
+    } catch (_) {
+      initialLang = 'en';
+    }
+    applyLanguage(initialLang, false);
 
     const authForms = document.getElementById('auth-forms');
     const signedInView = document.getElementById('signed-in-view');
@@ -677,45 +1389,64 @@
     const btnSignup = document.getElementById('btn-signup');
     const btnLogout = document.getElementById('btn-logout');
 
+    let authRequestSeq = 0;
+
     function setAuthButtonsDisabled(disabled) {
       if (btnLogin) btnLogin.disabled = disabled;
       if (btnSignup) btnSignup.disabled = disabled;
       if (btnLogout) btnLogout.disabled = disabled;
     }
 
+    function setPortalStatus(message) {
+      if (portalStatus) {
+        portalStatus.textContent = message;
+      }
+    }
+
     async function refreshPortalState() {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) {
-        if (authForms) authForms.style.display = 'block';
-        if (signedInView) signedInView.style.display = 'none';
-        return;
-      }
+      const seq = ++authRequestSeq;
+      try {
+        const { data, error } = await supabase.auth.getUser();
+        if (seq !== authRequestSeq) return;
 
-      if (authForms) authForms.style.display = 'none';
-      if (signedInView) signedInView.style.display = 'block';
-
-      const { data: profile, error: profileError } = await supabase
-        .from('clients')
-        .select('email, full_name, company_name, created_at')
-        .eq('id', user.id)
-        .maybeSingle();
-
-      if (profileError) {
-        if (profileDetails) {
-          profileDetails.textContent = `Signed in as ${user.email} (profile lookup note: ${profileError.message})`;
+        const user = data?.user;
+        if (error || !user) {
+          if (authForms) authForms.style.display = 'block';
+          if (signedInView) signedInView.style.display = 'none';
+          return;
         }
-        return;
-      }
 
-      const nameText = profile?.full_name || user.user_metadata?.full_name || 'Not set';
-      const companyText = profile?.company_name || user.user_metadata?.company_name || 'Not set';
+        if (authForms) authForms.style.display = 'none';
+        if (signedInView) signedInView.style.display = 'block';
 
-      if (profileDetails) {
-        profileDetails.innerHTML = `
-          <strong>Email:</strong> ${user.email}<br>
-          <strong>Full Name:</strong> ${nameText}<br>
-          <strong>Company:</strong> ${companyText}
-        `;
+        const { data: profile, error: profileError } = await supabase
+          .from('clients')
+          .select('email, full_name, company_name, created_at')
+          .eq('id', user.id)
+          .maybeSingle();
+
+        if (seq !== authRequestSeq) return;
+
+        if (profileError) {
+          if (profileDetails) {
+            profileDetails.textContent = `Signed in as ${user.email} (profile lookup note: ${profileError.message})`;
+          }
+          return;
+        }
+
+        const nameText = profile?.full_name || user.user_metadata?.full_name || 'Not set';
+        const companyText = profile?.company_name || user.user_metadata?.company_name || 'Not set';
+
+        if (profileDetails) {
+          profileDetails.innerHTML = `
+            <strong>Email:</strong> ${user.email}<br>
+            <strong>Full Name:</strong> ${nameText}<br>
+            <strong>Company:</strong> ${companyText}
+          `;
+        }
+      } catch (err) {
+        if (seq !== authRequestSeq) return;
+        setPortalStatus(`Portal connection note: ${err?.message || 'Unable to verify session.'}`);
       }
     }
 
@@ -726,43 +1457,47 @@
       const companyName = companyInput?.value.trim() || '';
 
       if (!email || !password) {
-        if (portalStatus) portalStatus.textContent = 'Please enter both email and password.';
+        setPortalStatus('Please enter both email and password.');
         return;
       }
 
       setAuthButtonsDisabled(true);
-      if (portalStatus) portalStatus.textContent = 'Creating account...';
+      setPortalStatus('Creating account...');
 
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: { full_name: fullName, company_name: companyName }
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: fullName, company_name: companyName }
+          }
+        });
+
+        if (error) {
+          setPortalStatus(`Sign-up error: ${error.message}`);
+          return;
         }
-      });
 
-      if (error) {
-        if (portalStatus) portalStatus.textContent = `Sign-up error: ${error.message}`;
+        if (data?.user && data?.session) {
+          const { error: upsertError } = await supabase
+            .from('clients')
+            .upsert({ id: data.user.id, email, full_name: fullName, company_name: companyName });
+
+          setPortalStatus(
+            upsertError
+              ? `Account created, profile save note: ${upsertError.message}`
+              : 'Account created and profile saved!'
+          );
+        } else {
+          setPortalStatus('Check your email to confirm your account, then sign in.');
+        }
+
+        await refreshPortalState();
+      } catch (err) {
+        setPortalStatus(`Sign-up error: ${err?.message || 'Unexpected error.'}`);
+      } finally {
         setAuthButtonsDisabled(false);
-        return;
       }
-
-      if (data.user && data.session) {
-        const { error: upsertError } = await supabase
-          .from('clients')
-          .upsert({ id: data.user.id, email, full_name: fullName, company_name: companyName });
-
-        if (portalStatus) {
-          portalStatus.textContent = upsertError
-            ? `Account created, profile save note: ${upsertError.message}`
-            : 'Account created and profile saved!';
-        }
-      } else if (portalStatus) {
-        portalStatus.textContent = 'Check your email to confirm your account, then sign in.';
-      }
-
-      await refreshPortalState();
-      setAuthButtonsDisabled(false);
     });
 
     btnLogin?.addEventListener('click', async () => {
@@ -772,53 +1507,60 @@
       const companyName = companyInput?.value.trim() || '';
 
       if (!email || !password) {
-        if (portalStatus) portalStatus.textContent = 'Please enter both email and password.';
+        setPortalStatus('Please enter both email and password.');
         return;
       }
 
       setAuthButtonsDisabled(true);
-      if (portalStatus) portalStatus.textContent = 'Signing in...';
+      setPortalStatus('Signing in...');
 
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-      if (error) {
-        if (portalStatus) portalStatus.textContent = `Sign-in error: ${error.message}`;
-        setAuthButtonsDisabled(false);
-        return;
-      }
-
-      const resolvedName = fullName || data.user?.user_metadata?.full_name || '';
-      const resolvedCompany = companyName || data.user?.user_metadata?.company_name || '';
-
-      if (data.user) {
-        const { error: upsertError } = await supabase
-          .from('clients')
-          .upsert({
-            id: data.user.id,
-            email: data.user.email,
-            full_name: resolvedName,
-            company_name: resolvedCompany
-          });
-
-        if (upsertError) {
-          if (portalStatus) portalStatus.textContent = `Signed in, profile save note: ${upsertError.message}`;
-          await refreshPortalState();
-          setAuthButtonsDisabled(false);
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+          setPortalStatus(`Sign-in error: ${error.message}`);
           return;
         }
-      }
 
-      if (portalStatus) portalStatus.textContent = 'Signed in successfully!';
-      await refreshPortalState();
-      setAuthButtonsDisabled(false);
+        const resolvedName = fullName || data?.user?.user_metadata?.full_name || '';
+        const resolvedCompany = companyName || data?.user?.user_metadata?.company_name || '';
+
+        if (data?.user) {
+          const { error: upsertError } = await supabase
+            .from('clients')
+            .upsert({
+              id: data.user.id,
+              email: data.user.email,
+              full_name: resolvedName,
+              company_name: resolvedCompany
+            });
+
+          if (upsertError) {
+            setPortalStatus(`Signed in, profile save note: ${upsertError.message}`);
+            await refreshPortalState();
+            return;
+          }
+        }
+
+        setPortalStatus('Signed in successfully!');
+        await refreshPortalState();
+      } catch (err) {
+        setPortalStatus(`Sign-in error: ${err?.message || 'Unexpected error.'}`);
+      } finally {
+        setAuthButtonsDisabled(false);
+      }
     });
 
     btnLogout?.addEventListener('click', async () => {
       setAuthButtonsDisabled(true);
-      await supabase.auth.signOut();
-      if (portalStatus) portalStatus.textContent = 'Signed out.';
-      await refreshPortalState();
-      setAuthButtonsDisabled(false);
+      try {
+        await supabase.auth.signOut();
+        setPortalStatus('Signed out.');
+        await refreshPortalState();
+      } catch (err) {
+        setPortalStatus(`Sign-out note: ${err?.message || 'Unable to sign out.'}`);
+      } finally {
+        setAuthButtonsDisabled(false);
+      }
     });
 
     supabase.auth.onAuthStateChange(() => {
