@@ -364,6 +364,18 @@
     supabase.auth.onAuthStateChange(() => {
       refreshPortalState();
     });
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (!targetEl) return;
+        e.preventDefault();
+        const navHeight = document.querySelector('nav')?.offsetHeight || 80;
+        const targetY = targetEl.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      });
+    });
 
     await refreshPortalState();
   </script>
