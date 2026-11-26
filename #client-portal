@@ -8,88 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  /* Client Portal Inquiry Form & Tracker */
-.portal-divider {
-  border: 0;
-  border-top: 1px solid #e5e7eb;
-  margin: 24px 0;
-}
-.inquiry-form-grid {
-  display: grid;
-  gap: 14px;
-  margin-top: 14px;
-}
-.inquiry-form-grid label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-  color: #1f2937;
-}
-.inquiry-form-grid input,
-.inquiry-form-grid select,
-.inquiry-form-grid textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-family: inherit;
-  box-sizing: border-box;
-}
-.inquiry-form-grid textarea {
-  min-height: 95px;
-  resize: vertical;
-}
-.inquiry-submit-btn {
-  background: #b91c1c;
-  color: #ffffff;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-.inquiry-submit-btn:hover {
-  background: #991b1b;
-}
-.inquiry-list {
-  display: grid;
-  gap: 12px;
-  margin-top: 14px;
-}
-.inquiry-item {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 14px;
-}
-.inquiry-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 6px;
-}
-.inquiry-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  background: #fef3c7;
-  color: #92400e;
-}
-.inquiry-badge.reviewed {
-  background: #dbeafe;
-  color: #1e40af;
-}
-.inquiry-badge.quoted {
-  background: #d1fae5;
-  color: #065f46;
-}
   <style>
     :root {
       --primary: #E60012;
@@ -382,6 +300,106 @@
       color: var(--dark);
     }
 
+    /* Client Portal Inquiry Form & Tracker */
+    .portal-divider {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 24px 0;
+    }
+
+    .inquiry-form-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .inquiry-form-grid label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      color: #1f2937;
+    }
+
+    .inquiry-form-grid input,
+    .inquiry-form-grid select,
+    .inquiry-form-grid textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    .inquiry-form-grid textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .inquiry-submit-btn {
+      background: #b91c1c;
+      color: #ffffff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .inquiry-submit-btn:hover:not(:disabled) {
+      background: #991b1b;
+    }
+
+    .inquiry-submit-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .inquiry-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .inquiry-item {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .inquiry-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .inquiry-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .inquiry-badge.reviewed {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .inquiry-badge.quoted {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
     footer {
       background: var(--dark);
       color: var(--white);
@@ -570,6 +588,53 @@
           <p id="profile-details">Loading profile...</p>
           <div class="btn-group" style="margin-top: 20px; justify-content: flex-start;">
             <button type="button" id="btn-logout" class="btn btn-secondary" data-i18n="btnLogout">Sign Out</button>
+          </div>
+
+          <hr class="portal-divider" />
+
+          <h3>Submit a Service Inquiry</h3>
+          <p style="font-size: 0.92rem; color: #4b5563;">
+            Send a direct request to our China &amp; Nigeria teams. Your profile details are attached automatically.
+          </p>
+
+          <form id="portal-inquiry-form" class="inquiry-form-grid">
+            <div>
+              <label for="inq-category">Service Category</label>
+              <select id="inq-category" required>
+                <option value="">-- Select a Service --</option>
+                <option value="Education Services">Education Services (Admissions &amp; Scholarships)</option>
+                <option value="Procurement & Sourcing">Procurement &amp; Sourcing (Factory &amp; Equipment)</option>
+                <option value="Business Development">Business Development &amp; Partnerships</option>
+                <option value="Supplier Payment Assistance">Supplier Payment Assistance</option>
+                <option value="Digital Payment Options">Digital Payment Options (USDT / BTC / ETH)</option>
+                <option value="Tourism & Cultural Exchange">Tourism &amp; Cultural Exchange</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="inq-subject">Subject / Product or Program Name</label>
+              <input type="text" id="inq-subject" placeholder="e.g., Medical Equipment Quote or Master's Admission" required />
+            </div>
+
+            <div>
+              <label for="inq-budget">Estimated Budget or Quantity (Optional)</label>
+              <input type="text" id="inq-budget" placeholder="e.g., 5 units or $10,000 USD" />
+            </div>
+
+            <div>
+              <label for="inq-details">Request Details</label>
+              <textarea id="inq-details" placeholder="Describe specifications, target timeline, or destination country..." required></textarea>
+            </div>
+
+            <button type="submit" id="inq-submit-btn" class="inquiry-submit-btn">Submit Service Request</button>
+            <p id="inq-status-msg" style="margin: 0; font-size: 0.9rem; font-weight: 500;"></p>
+          </form>
+
+          <hr class="portal-divider" />
+
+          <h3>My Submitted Inquiries</h3>
+          <div id="my-inquiries-list" class="inquiry-list">
+            <p style="color: #6b7280; font-size: 0.9rem;">Loading your inquiries...</p>
           </div>
         </div>
         <div id="portal-status" class="portal-status" role="status" aria-live="polite" data-i18n="portalReady">Ready to connect to Zhaoma Portal.</div>
@@ -1471,7 +1536,22 @@
     const btnSignup = document.getElementById('btn-signup');
     const btnLogout = document.getElementById('btn-logout');
 
+    // --- Client Portal Inquiry Form & Tracker ---
+    const inquiryForm = document.getElementById('portal-inquiry-form');
+    const inquiryStatusMsg = document.getElementById('inq-status-msg');
+    const inquiriesListEl = document.getElementById('my-inquiries-list');
+
     let authRequestSeq = 0;
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[ch]));
+    }
 
     function setAuthButtonsDisabled(disabled) {
       if (btnLogin) btnLogin.disabled = disabled;
@@ -1485,6 +1565,116 @@
       }
     }
 
+    async function loadMyInquiries(activeUser = null) {
+      if (!inquiriesListEl) return;
+
+      let user = activeUser;
+      if (!user) {
+        const { data } = await supabase.auth.getUser();
+        user = data?.user || null;
+      }
+
+      if (!user) {
+        inquiriesListEl.innerHTML = `<p style="color:#6b7280; font-size:0.9rem;">Sign in to view and submit your service inquiries.</p>`;
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('inquiries')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        inquiriesListEl.innerHTML = `<p style="color:#b91c1c;">Could not load inquiries: ${escapeHtml(error.message)}</p>`;
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        inquiriesListEl.innerHTML = `<p style="color:#6b7280; font-size:0.9rem;">No inquiries submitted yet. Use the form above to start your first request.</p>`;
+        return;
+      }
+
+      inquiriesListEl.innerHTML = data.map((item) => {
+        const dateStr = escapeHtml(new Date(item.created_at).toLocaleDateString());
+        const badgeClass = item.status === 'Quoted' ? 'quoted' : (item.status === 'In Review' ? 'reviewed' : '');
+        const budgetHtml = item.budget_or_quantity
+          ? ` • <span>Qty/Budget: ${escapeHtml(item.budget_or_quantity)}</span>`
+          : '';
+
+        return `
+          <div class="inquiry-item">
+            <div class="inquiry-item-header">
+              <strong>${escapeHtml(item.subject)}</strong>
+              <span class="inquiry-badge ${badgeClass}">${escapeHtml(item.status)}</span>
+            </div>
+            <div style="font-size:0.84rem; color:#4b5563; margin-bottom:6px;">
+              <span>${escapeHtml(item.service_category)}</span> • <span>Submitted: ${dateStr}</span>${budgetHtml}
+            </div>
+            <p style="margin:0; font-size:0.9rem; color:#1f2937;">${escapeHtml(item.details)}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('inq-submit-btn');
+        if (submitBtn) submitBtn.disabled = true;
+
+        if (inquiryStatusMsg) {
+          inquiryStatusMsg.style.color = '#374151';
+          inquiryStatusMsg.textContent = 'Submitting your inquiry...';
+        }
+
+        try {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (!user) {
+            if (inquiryStatusMsg) {
+              inquiryStatusMsg.style.color = '#b91c1c';
+              inquiryStatusMsg.textContent = 'Please sign in first to submit an inquiry.';
+            }
+            return;
+          }
+
+          const payload = {
+            user_id: user.id,
+            client_email: user.email,
+            client_name: user.user_metadata?.full_name || '',
+            company: user.user_metadata?.company_name || user.user_metadata?.company || '',
+            service_category: document.getElementById('inq-category')?.value || '',
+            subject: document.getElementById('inq-subject')?.value.trim() || '',
+            budget_or_quantity: document.getElementById('inq-budget')?.value.trim() || '',
+            details: document.getElementById('inq-details')?.value.trim() || ''
+          };
+
+          const { error } = await supabase.from('inquiries').insert([payload]);
+
+          if (error) {
+            if (inquiryStatusMsg) {
+              inquiryStatusMsg.style.color = '#b91c1c';
+              inquiryStatusMsg.textContent = 'Submission failed: ' + error.message;
+            }
+          } else {
+            if (inquiryStatusMsg) {
+              inquiryStatusMsg.style.color = '#065f46';
+              inquiryStatusMsg.textContent = 'Inquiry submitted! Our team will review it shortly.';
+            }
+            inquiryForm.reset();
+            await loadMyInquiries(user);
+          }
+        } catch (err) {
+          if (inquiryStatusMsg) {
+            inquiryStatusMsg.style.color = '#b91c1c';
+            inquiryStatusMsg.textContent = 'Submission error: ' + (err?.message || 'Unexpected error.');
+          }
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
+    }
+
     async function refreshPortalState() {
       const seq = ++authRequestSeq;
       try {
@@ -1495,6 +1685,7 @@
         if (error || !user) {
           if (authForms) authForms.style.display = 'block';
           if (signedInView) signedInView.style.display = 'none';
+          await loadMyInquiries(null);
           return;
         }
 
@@ -1513,6 +1704,7 @@
           if (profileDetails) {
             profileDetails.textContent = `Signed in as ${user.email} (profile lookup note: ${profileError.message})`;
           }
+          await loadMyInquiries(user);
           return;
         }
 
@@ -1521,11 +1713,13 @@
 
         if (profileDetails) {
           profileDetails.innerHTML = `
-            <strong>Email:</strong> ${user.email}<br>
-            <strong>Full Name:</strong> ${nameText}<br>
-            <strong>Company:</strong> ${companyText}
+            <strong>Email:</strong> ${escapeHtml(user.email)}<br>
+            <strong>Full Name:</strong> ${escapeHtml(nameText)}<br>
+            <strong>Company:</strong> ${escapeHtml(companyText)}
           `;
         }
+
+        await loadMyInquiries(user);
       } catch (err) {
         if (seq !== authRequestSeq) return;
         setPortalStatus(`Portal connection note: ${err?.message || 'Unable to verify session.'}`);
