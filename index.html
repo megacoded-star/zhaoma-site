@@ -32,7 +32,9 @@
     .card h3 { margin-bottom: 15px; }
     .highlight { background: var(--light); }
     .langs { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .lang { padding: 10px 16px; background: white; border-radius: 50px; border: 1px solid var(--border); }
+    .lang { padding: 10px 16px; background: white; border-radius: 50px; border: 1px solid var(--border); font-family: inherit; font-size: 0.95rem; font-weight: 600; color: var(--dark); cursor: pointer; }
+    .lang.active { border-color: var(--primary); background: #fff5f5; color: var(--primary); }
+    .lang-status { margin-top: 18px; text-align: center; font-size: 0.95rem; color: #555; }
     .portal-box { max-width: 560px; margin: 35px auto 0; padding: 30px; border: 1px solid var(--border); border-radius: 14px; background: white; }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-weight: 600; margin-bottom: 6px; }
@@ -135,7 +137,20 @@
   </section>
 
   <section id="languages">
-    <div class="container">
+<div class="langs" id="lang-buttons">
+  <button type="button" class="lang active" data-lang="en">English</button>
+  <button type="button" class="lang" data-lang="zh">Chinese</button>
+  <button type="button" class="lang" data-lang="fr">French</button>
+  <button type="button" class="lang" data-lang="es">Spanish</button>
+  <button type="button" class="lang" data-lang="pt">Portuguese</button>
+  <button type="button" class="lang" data-lang="ar">Arabic</button>
+  <button type="button" class="lang" data-lang="yo">Yoruba</button>
+  <button type="button" class="lang" data-lang="ig">Igbo</button>
+  <button type="button" class="lang" data-lang="ha">Hausa</button>
+  <button type="button" class="lang" data-lang="pcm">Nigerian Pidgin</button>
+  <button type="button" class="lang" data-lang="sw">Swahili</button>
+</div>
+<p class="lang-status" id="lang-status">Displaying key sections in English.</p>
       <h2>Multilingual Support</h2>
       <p class="section-intro">Support framework designed for international and African markets.</p>
       <div class="langs">
@@ -258,6 +273,241 @@
 
   <script type="module">
     import { supabase } from './supabaseClient.js';
+    const translations = {
+  en: {
+    label: 'English',
+    heroTitle: 'Building Trusted Bridges Between China, Africa, and Global Markets',
+    heroDesc: 'Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.',
+    servicesTitle: 'Our Services',
+    companyTitle: 'Company Profile',
+    portalTitle: 'Client Portal'
+  },
+  zh: {
+    label: 'Chinese',
+    heroTitle: '连接中国、非洲与全球市场的可信桥梁',
+    heroDesc: '兆马国际是一个跨境机遇平台，连接个人、企业、机构与组织，推动中国、非洲及全球市场之间的教育、商贸、采购与文化交流。',
+    servicesTitle: '我们的服务',
+    companyTitle: '公司简介',
+    portalTitle: '客户门户'
+  },
+  fr: {
+    label: 'French',
+    heroTitle: 'Construire des ponts de confiance entre la Chine, l’Afrique et les marchés mondiaux',
+    heroDesc: 'Zhaoma International est une plateforme transfrontalière reliant particuliers, entreprises, institutions et organisations aux opportunités éducatives, commerciales, d’approvisionnement et culturelles.',
+    servicesTitle: 'Nos Services',
+    companyTitle: 'Profil de l’Entreprise',
+    portalTitle: 'Portail Client'
+  },
+  es: {
+    label: 'Spanish',
+    heroTitle: 'Construyendo puentes de confianza entre China, África y los mercados globales',
+    heroDesc: 'Zhaoma International es una plataforma transfronteriza que conecta a personas, empresas, instituciones y organizaciones con oportunidades educativas, comerciales, de compras e intercambio cultural.',
+    servicesTitle: 'Nuestros Servicios',
+    companyTitle: 'Perfil de la Empresa',
+    portalTitle: 'Portal de Clientes'
+  },
+  pt: {
+    label: 'Portuguese',
+    heroTitle: 'Construindo pontes de confiança entre a China, a África e os mercados globais',
+    heroDesc: 'A Zhaoma International é uma plataforma transfrontaliça que conecta pessoas, empresas, instituições e organizações a oportunidades educacionais, comerciais, de compras e intercâmbio cultural.',
+    servicesTitle: 'Nossos Serviços',
+    companyTitle: 'Perfil da Empresa',
+    portalTitle: 'Portal do Cliente'
+  },
+  ar: {
+    label: 'Arabic',
+    heroTitle: 'بناء جسور موثوقة بين الصين وأفريقيا والأسواق العالمية',
+    heroDesc: 'زاوما إنترناشونال منصة عابرة للحدود تربط الأفراد والشركات والمؤسسات بفرص التعليم والتجارة والمشتريات والتبادل الثقافي بين الصين وأفريقيا والعالم.',
+    servicesTitle: 'خدماتنا',
+    companyTitle: 'نبذة عن الشركة',
+    portalTitle: 'بوابة العملاء'
+  },
+  yo: {
+    label: 'Yoruba',
+    heroTitle: 'Kíkọ́ àwọn afárá ìgbẹ́kẹ̀lé láàárín Ṣáínà, Áfíríkà àti àwọn ọjà àgbáyé',
+    heroDesc: 'Zhaoma International jẹ́ pẹpẹ ìṣọ̀kan àgbáyé tí ń so àwọn ènìyàn, ilé-iṣẹ́ àti àjọ pọ̀ mọ́ àǹfààní ẹ̀kọ́, ìṣòwò, ríra ọjà àti àṣà.',
+    servicesTitle: 'Àwọn Iṣẹ́ Wa',
+    companyTitle: 'Ìròyìn Ilé-Iṣẹ́',
+    portalTitle: 'Àgbègbè Oníbàárà'
+  },
+  ig: {
+    label: 'Igbo',
+    heroTitle: 'Iwulite àkwà mmiri ntụkwasị obi n’etiti China, Africa na ahịa ụwa',
+    heroDesc: 'Zhaoma International bụ ikpo okwu na-ejikọ ndị mmadụ, azụmahịa na ụlọ ọrụ na ohere agụmakwụkwọ, azụmahịa, ịzụ ahịa na omenala.',
+    servicesTitle: 'Ọrụ Anyị',
+    companyTitle: 'Nkọwa Ụlọ Ọrụ',
+    portalTitle: 'Ọnụ Ụzọ Ndị Ahịa'
+  },
+  ha: {
+    label: 'Hausa',
+    heroTitle: 'Gina gadoji na amana tsakanin Sin, Afirka da kasuwannin duniya',
+    heroDesc: 'Zhaoma International dandali ne da ke haɗa daidaikun mutane, kasuwanci da cibiyoyi da damar ilimi, kasuwanci, sayo da musayar al’adu.',
+    servicesTitle: 'Ayyukanmu',
+    companyTitle: 'Bayanan Kamfani',
+    portalTitle: 'Shafin Abokan Ciniki'
+  },
+  pcm: {
+    label: 'Nigerian Pidgin',
+    heroTitle: 'We dey build trust bridge between China, Africa, and world markets',
+    heroDesc: 'Zhaoma International na platform wey dey connect pipu, business, and organisations to school, trade, sourcing, and culture chances.',
+    servicesTitle: 'Our Services',
+    companyTitle: 'About Our Company',
+    portalTitle: 'Client Portal'
+  },
+  sw: {
+    label: 'Swahili',
+    heroTitle: 'Kujenga madaraja ya kuaminika kati ya China, Afrika na masoko ya dunia',
+    heroDesc: 'Zhaoma International ni jukwaa linalounganisha watu binafsi, biashara na taasisi na fursa za elimu, biashara, ununuzi na utamaduni.',
+    servicesTitle: 'Huduma Zetu',
+    companyTitle: 'Wasifu wa Kampuni',
+    portalTitle: 'Tovuti ya Wateja'
+  }
+};
+
+const langButtons = document.querySelectorAll('#lang-buttons .lang');
+const langStatus = document.getElementById('lang-status');
+const heroTitleEl = document.querySelector('.hero h1');
+const heroDescEl = document.querySelector('.hero p');
+const servicesTitleEl = document.querySelector('#services h2');
+const companyTitleEl = document.querySelector('#company h2');
+const portalTitleEl = document.querySelector('#portal h2');
+
+langButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const code = btn.dataset.lang;
+    const data = translations[code] || translations.en;
+
+    langButtons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (heroTitleEl) heroTitleEl.textContent = data.heroTitle;
+    if (heroDescEl) heroDescEl.textContent = data.heroDesc;
+    if (servicesTitleEl) servicesTitleEl.textContent = data.servicesTitle;
+    if (companyTitleEl) companyTitleEl.textContent = data.companyTitle;
+    if (portalTitleEl) portalTitleEl.textContent = data.portalTitle;
+
+    if (langStatus) {
+      langStatus.textContent = `Displaying key sections in ${data.label}.`;
+    }
+  });
+});
+  en: {
+    label: 'English',
+    heroTitle: 'Building Trusted Bridges Between China, Africa, and Global Markets',
+    heroDesc: 'Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.',
+    servicesTitle: 'Our Services',
+    companyTitle: 'Company Profile',
+    portalTitle: 'Client Portal'
+  },
+  zh: {
+    label: 'Chinese',
+    heroTitle: '连接中国、非洲与全球市场的可信桥梁',
+    heroDesc: '兆马国际是一个跨境机遇平台，连接个人、企业、机构与组织，推动中国、非洲及全球市场之间的教育、商贸、采购与文化交流。',
+    servicesTitle: '我们的服务',
+    companyTitle: '公司简介',
+    portalTitle: '客户门户'
+  },
+  fr: {
+    label: 'French',
+    heroTitle: 'Construire des ponts de confiance entre la Chine, l’Afrique et les marchés mondiaux',
+    heroDesc: 'Zhaoma International est une plateforme transfrontalière reliant particuliers, entreprises, institutions et organisations aux opportunités éducatives, commerciales, d’approvisionnement et culturelles.',
+    servicesTitle: 'Nos Services',
+    companyTitle: 'Profil de l’Entreprise',
+    portalTitle: 'Portail Client'
+  },
+  es: {
+    label: 'Spanish',
+    heroTitle: 'Construyendo puentes de confianza entre China, África y los mercados globales',
+    heroDesc: 'Zhaoma International es una plataforma transfronteriza que conecta a personas, empresas, instituciones y organizaciones con oportunidades educativas, comerciales, de compras e intercambio cultural.',
+    servicesTitle: 'Nuestros Servicios',
+    companyTitle: 'Perfil de la Empresa',
+    portalTitle: 'Portal de Clientes'
+  },
+  pt: {
+    label: 'Portuguese',
+    heroTitle: 'Construindo pontes de confiança entre a China, a África e os mercados globais',
+    heroDesc: 'A Zhaoma International é uma plataforma transfrontaliça que conecta pessoas, empresas, instituições e organizações a oportunidades educacionais, comerciais, de compras e intercâmbio cultural.',
+    servicesTitle: 'Nossos Serviços',
+    companyTitle: 'Perfil da Empresa',
+    portalTitle: 'Portal do Cliente'
+  },
+  ar: {
+    label: 'Arabic',
+    heroTitle: 'بناء جسور موثوقة بين الصين وأفريقيا والأسواق العالمية',
+    heroDesc: 'زاوما إنترناشونال منصة عابرة للحدود تربط الأفراد والشركات والمؤسسات بفرص التعليم والتجارة والمشتريات والتبادل الثقافي بين الصين وأفريقيا والعالم.',
+    servicesTitle: 'خدماتنا',
+    companyTitle: 'نبذة عن الشركة',
+    portalTitle: 'بوابة العملاء'
+  },
+  yo: {
+    label: 'Yoruba',
+    heroTitle: 'Kíkọ́ àwọn afárá ìgbẹ́kẹ̀lé láàárín Ṣáínà, Áfíríkà àti àwọn ọjà àgbáyé',
+    heroDesc: 'Zhaoma International jẹ́ pẹpẹ ìṣọ̀kan àgbáyé tí ń so àwọn ènìyàn, ilé-iṣẹ́ àti àjọ pọ̀ mọ́ àǹfààní ẹ̀kọ́, ìṣòwò, ríra ọjà àti àṣà.',
+    servicesTitle: 'Àwọn Iṣẹ́ Wa',
+    companyTitle: 'Ìròyìn Ilé-Iṣẹ́',
+    portalTitle: 'Àgbègbè Oníbàárà'
+  },
+  ig: {
+    label: 'Igbo',
+    heroTitle: 'Iwulite àkwà mmiri ntụkwasị obi n’etiti China, Africa na ahịa ụwa',
+    heroDesc: 'Zhaoma International bụ ikpo okwu na-ejikọ ndị mmadụ, azụmahịa na ụlọ ọrụ na ohere agụmakwụkwọ, azụmahịa, ịzụ ahịa na omenala.',
+    servicesTitle: 'Ọrụ Anyị',
+    companyTitle: 'Nkọwa Ụlọ Ọrụ',
+    portalTitle: 'Ọnụ Ụzọ Ndị Ahịa'
+  },
+  ha: {
+    label: 'Hausa',
+    heroTitle: 'Gina gadoji na amana tsakanin Sin, Afirka da kasuwannin duniya',
+    heroDesc: 'Zhaoma International dandali ne da ke haɗa daidaikun mutane, kasuwanci da cibiyoyi da damar ilimi, kasuwanci, sayo da musayar al’adu.',
+    servicesTitle: 'Ayyukanmu',
+    companyTitle: 'Bayanan Kamfani',
+    portalTitle: 'Shafin Abokan Ciniki'
+  },
+  pcm: {
+    label: 'Nigerian Pidgin',
+    heroTitle: 'We dey build trust bridge between China, Africa, and world markets',
+    heroDesc: 'Zhaoma International na platform wey dey connect pipu, business, and organisations to school, trade, sourcing, and culture chances.',
+    servicesTitle: 'Our Services',
+    companyTitle: 'About Our Company',
+    portalTitle: 'Client Portal'
+  },
+  sw: {
+    label: 'Swahili',
+    heroTitle: 'Kujenga madaraja ya kuaminika kati ya China, Afrika na masoko ya dunia',
+    heroDesc: 'Zhaoma International ni jukwaa linalounganisha watu binafsi, biashara na taasisi na fursa za elimu, biashara, ununuzi na utamaduni.',
+    servicesTitle: 'Huduma Zetu',
+    companyTitle: 'Wasifu wa Kampuni',
+    portalTitle: 'Tovuti ya Wateja'
+  }
+};
+
+const langButtons = document.querySelectorAll('#lang-buttons .lang');
+const langStatus = document.getElementById('lang-status');
+const heroTitleEl = document.querySelector('.hero h1');
+const heroDescEl = document.querySelector('.hero p');
+const servicesTitleEl = document.querySelector('#services h2');
+const companyTitleEl = document.querySelector('#company h2');
+const portalTitleEl = document.querySelector('#portal h2');
+
+langButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const code = btn.dataset.lang;
+    const data = translations[code] || translations.en;
+
+    langButtons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (heroTitleEl) heroTitleEl.textContent = data.heroTitle;
+    if (heroDescEl) heroDescEl.textContent = data.heroDesc;
+    if (servicesTitleEl) servicesTitleEl.textContent = data.servicesTitle;
+    if (companyTitleEl) companyTitleEl.textContent = data.companyTitle;
+    if (portalTitleEl) portalTitleEl.textContent = data.portalTitle;
+
+    if (langStatus) {
+      langStatus.textContent = `Displaying key sections in ${data.label}.`;
+    }
+  });
+});
 
     const authForms = document.getElementById('auth-forms');
     const signedInView = document.getElementById('signed-in-view');
