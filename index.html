@@ -2291,5 +2291,63 @@
 
     await refreshPortalState();
   </script>
+  <div id="zhaoma-workflow-root"></div>
+<script type="module">
+  const ADMINS = ["zhaomazhaomainternational@gmail.com", "ayoadeadesola30@yahoo.com"];
+  const STATUSES = ["Pending", "In Review", "Approved", "Completed"];
+  const root = document.getElementById("zhaoma-workflow-root");
+
+  async function renderWorkflow() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      root.innerHTML = "";
+      return;
+    }
+    const isAdmin = ADMINS.includes((user.email || "").toLowerCase());
+    const { data: inquiries } = await supabase.from("inquiries").select("*").order("created_at", { ascending: false });
+    const { data: messages } = await supabase.from("inquiry_messages").select("*").order("created_at", { ascending: true });
+    const byId = (messages || []).reduce((a, m) => ((a[m.inquiry_id] = a[m.inquiry_id] || []).push(m), a), {});
+
+    root.innerHTML = `<div style="margin-top:24px;border:1px solid #ddd;padding:16px;border-radius:8px;">
+      <h3>${isAdmin ? "Admin Panel — Inquiries" : "Inquiry Replies & Status"}</h3>
+      ${(inquiries || []).map((inq) => `
+        <div data-id="${inq.id}" style="border-top:1px solid #eee;padding:12px 0;">
+          <b>${inq.subject}</b> (${inq.status || "Pending"}) ${isAdmin ? `- ${inq.client_email}` : ""}
+          ${isAdmin ? `<div><select class="st">${STATUSES.map((s) => `<option ${inq.status === s ? "selected" : ""}>${s}</option>`).join("")}</select><button class="save-st">Save Status</button></div>` : ""}
+          <div style="margin-top:8px;">
+            ${(byId[inq.id] || []).map((m) => `<div><b>${m.sender_role === "admin" ? "Zhaoma" : "Client"}:</b> ${m.message}</div>`).join("")}
+            <form class="msg-form" style="display:flex;gap:6px;margin-top:6px;">
+              <input class="msg-in" placeholder="Type message..." required style="flex:1;padding:6px;" />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>`).join("")}
+    </div>`;
+
+    root.querySelectorAll(".save-st").forEach((b) => (b.onclick = async () => {
+      const box = b.closest("[data-id]");
+      await supabase.from("inquiries").update({ status: box.querySelector(".st").value }).eq("id", box.dataset.id);
+      renderWorkflow();
+    }));
+
+    root.querySelectorAll(".msg-form").forEach((f) => (f.onsubmit = async (e) => {
+      e.preventDefault();
+      const box = f.closest("[data-id]");
+      const inp = f.querySelector(".msg-in");
+      await supabase.from("inquiry_messages").insert({
+        inquiry_id: box.dataset.id,
+        sender_id: user.id,
+        sender_email: user.email,
+        sender_role: isAdmin ? "admin" : "client",
+        message: inp.value.trim()
+      });
+      inp.value = "";
+      renderWorkflow();
+    }));
+  }
+
+  renderWorkflow();
+  supabase.auth.onAuthStateChange(() => renderWorkflow());
+</script>
 </body>
 </html>
