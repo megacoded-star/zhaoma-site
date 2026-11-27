@@ -57,6 +57,7 @@
       align-items: center;
       padding: 18px 0;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -65,6 +66,8 @@
       gap: 12px;
       font-weight: 800;
       font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--dark);
     }
 
     .logo-mark {
@@ -79,6 +82,17 @@
       font-size: 24px;
       font-weight: 800;
       flex-shrink: 0;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--dark);
     }
 
     .nav-links {
@@ -207,6 +221,13 @@
       min-width: 0;
       overflow-wrap: anywhere;
       word-break: break-word;
+      scroll-margin-top: 100px;
+      transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.25s ease;
+    }
+
+    .card.policy-active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.16), 0 12px 28px rgba(0, 0, 0, 0.06);
     }
 
     .card h3 {
@@ -259,7 +280,7 @@
     }
 
     .portal-box {
-      max-width: 560px;
+      max-width: 580px;
       margin: 35px auto 0;
       padding: 30px;
       border: 1px solid var(--border);
@@ -292,11 +313,11 @@
     }
 
     .portal-status {
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 12px 14px;
       border-radius: 8px;
       background: var(--light);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--dark);
     }
 
@@ -333,29 +354,62 @@
       box-sizing: border-box;
     }
 
+    .inquiry-form-grid input:focus,
+    .inquiry-form-grid select:focus,
+    .inquiry-form-grid textarea:focus {
+      outline: 2px solid rgba(230, 0, 18, 0.2);
+      border-color: var(--primary);
+    }
+
     .inquiry-form-grid textarea {
       min-height: 95px;
       resize: vertical;
     }
 
     .inquiry-submit-btn {
-      background: #b91c1c;
+      background: var(--primary);
       color: #ffffff;
       border: none;
       padding: 12px 18px;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
     .inquiry-submit-btn:hover:not(:disabled) {
-      background: #991b1b;
+      background: var(--primary-hover);
     }
 
     .inquiry-submit-btn:disabled {
       opacity: 0.65;
       cursor: not-allowed;
+    }
+
+    .inquiries-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .refresh-btn {
+      background: var(--white);
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .refresh-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .inquiry-list {
@@ -400,6 +454,47 @@
       color: #065f46;
     }
 
+    /* Policy Tabs */
+    .policy-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .policy-tab-btn {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--dark);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .policy-tab-btn:hover,
+    .policy-tab-btn.active {
+      border-color: var(--primary);
+      background: #fff5f5;
+      color: var(--primary);
+    }
+
+    /* Contact links */
+    .contact-link {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
     footer {
       background: var(--dark);
       color: var(--white);
@@ -413,10 +508,12 @@
     footer a {
       color: var(--white);
       text-decoration: none;
+      cursor: pointer;
     }
 
     footer a:hover {
       text-decoration: underline;
+      color: #ffcccc;
     }
 
     .footer-grid {
@@ -433,15 +530,104 @@
       color: var(--white);
       padding: 14px 20px;
       border-radius: 50px;
-      text-decoration: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.98rem;
       font-weight: 700;
+      cursor: pointer;
       box-shadow: 0 8px 24px rgba(0, 102, 255, 0.28);
       z-index: 90;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .live-chat:hover {
+      background: #0052cc;
+      transform: translateY(-2px);
+    }
+
+    /* Advisor / Live Support Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.58);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 200;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--white);
+      border-radius: 16px;
+      max-width: 460px;
+      width: 100%;
+      padding: 26px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    .support-options {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .support-option-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      background: var(--white);
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .support-option-link:hover {
+      border-color: var(--primary);
+      background: #fff5f5;
     }
 
     @media (max-width: 900px) {
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .nav-links {
         display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
       }
     }
   </style>
@@ -449,16 +635,18 @@
 <body>
   <nav>
     <div class="container nav-inner">
-      <div class="logo">
+      <a href="#" class="logo">
         <div class="logo-mark">Z</div>
         <div>Zhaoma International</div>
-      </div>
-      <div class="nav-links">
+      </a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="nav-links">
         <a href="#services" data-i18n="navServices">Services</a>
         <a href="#company" data-i18n="navCompany">Company</a>
         <a href="#languages" data-i18n="navLanguages">Languages</a>
         <a href="#portal" data-i18n="navPortal">Client Portal</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#policies" data-i18n="policiesTitle">Policies</a>
       </div>
     </div>
   </nav>
@@ -468,7 +656,7 @@
       <h1 data-i18n="heroTitle">Building Trusted Bridges Between China, Africa, and Global Markets</h1>
       <p data-i18n="heroDesc">Zhaoma International is a cross-border opportunity platform connecting individuals, businesses, institutions, and organizations with educational, commercial, procurement, and cultural opportunities across China, Africa, and global markets.</p>
       <div class="btn-group">
-        <a href="#contact" class="btn btn-primary" data-i18n="ctaAdvisor">Talk to an Advisor</a>
+        <button type="button" class="btn btn-primary open-support-modal" data-i18n="ctaAdvisor">Talk to an Advisor</button>
         <a href="#overview" class="btn btn-secondary" data-i18n="ctaOverview">Company Overview</a>
       </div>
     </div>
@@ -583,6 +771,7 @@
             <button type="button" id="btn-signup" class="btn btn-secondary" data-i18n="btnSignup">Create Account</button>
           </div>
         </div>
+
         <div id="signed-in-view" style="display: none;">
           <h3 data-i18n="profileHeading">Client Profile</h3>
           <p id="profile-details">Loading profile...</p>
@@ -592,14 +781,14 @@
 
           <hr class="portal-divider" />
 
-          <h3>Submit a Service Inquiry</h3>
-          <p style="font-size: 0.92rem; color: #4b5563;">
+          <h3 data-i18n="inquiryFormHeading">Submit a Service Inquiry</h3>
+          <p style="font-size: 0.92rem; color: #4b5563;" data-i18n="inquiryFormIntro">
             Send a direct request to our China &amp; Nigeria teams. Your profile details are attached automatically.
           </p>
 
           <form id="portal-inquiry-form" class="inquiry-form-grid">
             <div>
-              <label for="inq-category">Service Category</label>
+              <label for="inq-category" data-i18n="labelCategory">Service Category</label>
               <select id="inq-category" required>
                 <option value="">-- Select a Service --</option>
                 <option value="Education Services">Education Services (Admissions &amp; Scholarships)</option>
@@ -612,31 +801,35 @@
             </div>
 
             <div>
-              <label for="inq-subject">Subject / Product or Program Name</label>
+              <label for="inq-subject" data-i18n="labelSubject">Subject / Product or Program Name</label>
               <input type="text" id="inq-subject" placeholder="e.g., Medical Equipment Quote or Master's Admission" required />
             </div>
 
             <div>
-              <label for="inq-budget">Estimated Budget or Quantity (Optional)</label>
+              <label for="inq-budget" data-i18n="labelBudget">Estimated Budget or Quantity (Optional)</label>
               <input type="text" id="inq-budget" placeholder="e.g., 5 units or $10,000 USD" />
             </div>
 
             <div>
-              <label for="inq-details">Request Details</label>
+              <label for="inq-details" data-i18n="labelDetails">Request Details</label>
               <textarea id="inq-details" placeholder="Describe specifications, target timeline, or destination country..." required></textarea>
             </div>
 
-            <button type="submit" id="inq-submit-btn" class="inquiry-submit-btn">Submit Service Request</button>
+            <button type="submit" id="inq-submit-btn" class="inquiry-submit-btn" data-i18n="btnSubmitRequest">Submit Service Request</button>
             <p id="inq-status-msg" style="margin: 0; font-size: 0.9rem; font-weight: 500;"></p>
           </form>
 
           <hr class="portal-divider" />
 
-          <h3>My Submitted Inquiries</h3>
+          <div class="inquiries-header">
+            <h3 style="margin: 0;" data-i18n="myInquiriesHeading">My Submitted Inquiries</h3>
+            <button type="button" id="btn-refresh-inquiries" class="refresh-btn">↻ Refresh</button>
+          </div>
           <div id="my-inquiries-list" class="inquiry-list">
             <p style="color: #6b7280; font-size: 0.9rem;">Loading your inquiries...</p>
           </div>
         </div>
+
         <div id="portal-status" class="portal-status" role="status" aria-live="polite" data-i18n="portalReady">Ready to connect to Zhaoma Portal.</div>
       </div>
     </div>
@@ -648,15 +841,15 @@
       <div class="grid">
         <div class="card">
           <h3 data-i18n="contactEmailTitle">Email</h3>
-          <p>zhaomazhaomainternational@gmail.com</p>
+          <p><a class="contact-link" href="mailto:zhaomazhaomainternational@gmail.com">zhaomazhaomainternational@gmail.com</a></p>
         </div>
         <div class="card">
           <h3 data-i18n="contactChinaTitle">China Office</h3>
-          <p>+86 131 1678 1815</p>
+          <p><a class="contact-link" href="https://wa.me/8613116781815" target="_blank" rel="noopener noreferrer">+86 131 1678 1815 (WhatsApp / Call)</a></p>
         </div>
         <div class="card">
           <h3 data-i18n="contactNigeriaTitle">Nigeria Office</h3>
-          <p>+234 904 244 1661</p>
+          <p><a class="contact-link" href="https://wa.me/2349042441661" target="_blank" rel="noopener noreferrer">+234 904 244 1661 (WhatsApp / Call)</a></p>
         </div>
       </div>
     </div>
@@ -666,7 +859,14 @@
     <div class="container">
       <h2 data-i18n="policiesTitle">Policies</h2>
       <p class="section-intro" data-i18n="policiesIntro">Governing terms, privacy practices, and refund rules for using Zhaoma International and its services.</p>
-      <div class="card" id="terms" style="margin-top: 30px;">
+
+      <div class="policy-tabs" role="group" aria-label="Policy quick jump">
+        <button type="button" class="policy-tab-btn" data-policy-target="terms" data-i18n="termsTitle">Terms of Service</button>
+        <button type="button" class="policy-tab-btn" data-policy-target="privacy" data-i18n="privacyTitle">Privacy Policy</button>
+        <button type="button" class="policy-tab-btn" data-policy-target="refund" data-i18n="refundTitle">Refund Policy</button>
+      </div>
+
+      <div class="card" id="terms" style="margin-top: 26px;">
         <h3 data-i18n="termsTitle">Terms of Service</h3>
         <p data-i18n="termsBody">All platform information, guidance, and facilitation across education, procurement, trade, business development, payment assistance, and cultural exchange are provided on an "as-is" and "as-available" basis without guarantee of admission, approval, supplier performance, or specific commercial outcomes. Zhaoma International reserves the right to accept, decline, suspend, or terminate any inquiry, account, or engagement at its sole discretion, update terms or offerings at any time, and limit liability to the fullest extent permitted by law.</p>
       </div>
@@ -691,17 +891,47 @@
         <h3 data-i18n="footerResources">Resources</h3>
         <p><a href="#company" data-i18n="companyTitle">Company Profile</a></p>
         <p><a href="#overview" data-i18n="overviewTitle">Corporate Overview</a></p>
+        <p><a href="#portal" data-i18n="navPortal">Client Portal</a></p>
       </div>
       <div>
         <h3 data-i18n="policiesTitle">Policies</h3>
-        <p><a href="#terms" data-i18n="termsShort">Terms</a></p>
-        <p><a href="#privacy" data-i18n="privacyShort">Privacy</a></p>
-        <p><a href="#refund" data-i18n="refundTitle">Refund Policy</a></p>
+        <p><a href="#terms" class="policy-jump-link" data-policy-target="terms" data-i18n="termsShort">Terms</a></p>
+        <p><a href="#privacy" class="policy-jump-link" data-policy-target="privacy" data-i18n="privacyShort">Privacy</a></p>
+        <p><a href="#refund" class="policy-jump-link" data-policy-target="refund" data-i18n="refundTitle">Refund Policy</a></p>
       </div>
     </div>
   </footer>
 
-  <a class="live-chat" href="https://wa.me/8613116781815" target="_blank" rel="noopener noreferrer" data-i18n="liveSupport">💬 Live Support</a>
+  <button type="button" class="live-chat open-support-modal" data-i18n="liveSupport">💬 Live Support</button>
+
+  <!-- Advisor & Live Support Modal -->
+  <div class="modal-backdrop" id="support-modal" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="close-support-modal" aria-label="Close support dialog">✕</button>
+      <h3 id="support-modal-title" style="margin-bottom: 8px;" data-i18n="modalSupportTitle">Talk to a Zhaoma Advisor</h3>
+      <p style="font-size: 0.94rem; color: var(--muted);" data-i18n="modalSupportDesc">
+        Choose your preferred channel below to connect with our China or Nigeria coordination desk.
+      </p>
+      <div class="support-options">
+        <a class="support-option-link" href="https://wa.me/8613116781815" target="_blank" rel="noopener noreferrer">
+          <span>🇨🇳 WhatsApp — China Office</span>
+          <span>+86 131 1678 1815 →</span>
+        </a>
+        <a class="support-option-link" href="https://wa.me/2349042441661" target="_blank" rel="noopener noreferrer">
+          <span>🇳🇬 WhatsApp — Nigeria Office</span>
+          <span>+234 904 244 1661 →</span>
+        </a>
+        <a class="support-option-link" href="mailto:zhaomazhaomainternational@gmail.com">
+          <span>✉️ Email Support</span>
+          <span>Send Email →</span>
+        </a>
+        <a class="support-option-link" href="#portal" id="modal-portal-jump">
+          <span>📋 Client Portal Request</span>
+          <span>Open Form →</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script type="module">
     import { supabase } from './supabaseClient.js';
@@ -758,6 +988,14 @@
         btnSignup: 'Create Account',
         profileHeading: 'Client Profile',
         btnLogout: 'Sign Out',
+        inquiryFormHeading: 'Submit a Service Inquiry',
+        inquiryFormIntro: 'Send a direct request to our China & Nigeria teams. Your profile details are attached automatically.',
+        labelCategory: 'Service Category',
+        labelSubject: 'Subject / Product or Program Name',
+        labelBudget: 'Estimated Budget or Quantity (Optional)',
+        labelDetails: 'Request Details',
+        btnSubmitRequest: 'Submit Service Request',
+        myInquiriesHeading: 'My Submitted Inquiries',
         portalReady: 'Ready to connect to Zhaoma Portal.',
         contactTitle: 'Contact Us',
         contactEmailTitle: 'Email',
@@ -774,7 +1012,9 @@
         footerResources: 'Resources',
         termsShort: 'Terms',
         privacyShort: 'Privacy',
-        liveSupport: '💬 Live Support'
+        liveSupport: '💬 Live Support',
+        modalSupportTitle: 'Talk to a Zhaoma Advisor',
+        modalSupportDesc: 'Choose your preferred channel below to connect with our China or Nigeria coordination desk.'
       },
       zh: {
         label: 'Chinese',
@@ -825,6 +1065,14 @@
         btnSignup: '创建账号',
         profileHeading: '客户档案',
         btnLogout: '退出登录',
+        inquiryFormHeading: '提交服务咨询',
+        inquiryFormIntro: '直接向中国和尼日利亚团队发送需求，系统将自动关联您的客户资料。',
+        labelCategory: '服务类别',
+        labelSubject: '主题 / 产品或项目名称',
+        labelBudget: '预计预算或数量（选填）',
+        labelDetails: '需求详情',
+        btnSubmitRequest: '提交服务请求',
+        myInquiriesHeading: '我提交的咨询',
         portalReady: '已准备好连接兆马客户门户。',
         contactTitle: '联系我们',
         contactEmailTitle: '电子邮箱',
@@ -841,7 +1089,9 @@
         footerResources: '相关资源',
         termsShort: '条款',
         privacyShort: '隐私',
-        liveSupport: '💬 在线支持'
+        liveSupport: '💬 在线支持',
+        modalSupportTitle: '联系兆马顾问',
+        modalSupportDesc: '请选择以下联系方式，直接对接我们的中国或尼日利亚协调团队。'
       },
       fr: {
         label: 'French',
@@ -892,6 +1142,14 @@
         btnSignup: 'Créer un Compte',
         profileHeading: 'Profil Client',
         btnLogout: 'Déconnexion',
+        inquiryFormHeading: 'Soumettre une Demande de Service',
+        inquiryFormIntro: 'Envoyez une demande directe à nos équipes en Chine et au Nigeria.',
+        labelCategory: 'Catégorie de Service',
+        labelSubject: 'Objet / Produit ou Programme',
+        labelBudget: 'Budget ou Quantité Estimée (Optionnel)',
+        labelDetails: 'Détails de la Demande',
+        btnSubmitRequest: 'Envoyer la Demande',
+        myInquiriesHeading: 'Mes Demandes Soumises',
         portalReady: 'Prêt à se connecter au Portail Zhaoma.',
         contactTitle: 'Contactez-Nous',
         contactEmailTitle: 'E-mail',
@@ -908,7 +1166,9 @@
         footerResources: 'Ressources',
         termsShort: 'Conditions',
         privacyShort: 'Confidentialité',
-        liveSupport: '💬 Support en Direct'
+        liveSupport: '💬 Support en Direct',
+        modalSupportTitle: 'Parler à un Conseiller Zhaoma',
+        modalSupportDesc: 'Choisissez votre canal préféré pour joindre notre équipe en Chine ou au Nigeria.'
       },
       es: {
         label: 'Spanish',
@@ -959,6 +1219,14 @@
         btnSignup: 'Crear Cuenta',
         profileHeading: 'Perfil del Cliente',
         btnLogout: 'Cerrar Sesión',
+        inquiryFormHeading: 'Enviar Solicitud de Servicio',
+        inquiryFormIntro: 'Envíe una solicitud directa a nuestros equipos en China y Nigeria.',
+        labelCategory: 'Categoría de Servicio',
+        labelSubject: 'Asunto / Producto o Programa',
+        labelBudget: 'Presupuesto o Cantidad Estimada (Opcional)',
+        labelDetails: 'Detalles de la Solicitud',
+        btnSubmitRequest: 'Enviar Solicitud',
+        myInquiriesHeading: 'Mis Solicitudes Enviadas',
         portalReady: 'Listo para conectar con el Portal Zhaoma.',
         contactTitle: 'Contáctenos',
         contactEmailTitle: 'Correo electrónico',
@@ -975,7 +1243,9 @@
         footerResources: 'Recursos',
         termsShort: 'Términos',
         privacyShort: 'Privacidad',
-        liveSupport: '💬 Soporte en Vivo'
+        liveSupport: '💬 Soporte en Vivo',
+        modalSupportTitle: 'Hablar con un Asesor de Zhaoma',
+        modalSupportDesc: 'Elija su canal preferido para contactar con nuestras oficinas en China o Nigeria.'
       },
       pt: {
         label: 'Portuguese',
@@ -1026,6 +1296,14 @@
         btnSignup: 'Criar Conta',
         profileHeading: 'Perfil do Cliente',
         btnLogout: 'Sair',
+        inquiryFormHeading: 'Enviar Solicitação de Serviço',
+        inquiryFormIntro: 'Envie uma solicitação direta para nossas equipes na China e na Nigéria.',
+        labelCategory: 'Categoria de Serviço',
+        labelSubject: 'Assunto / Produto ou Programa',
+        labelBudget: 'Orçamento ou Quantidade Estimada (Opcional)',
+        labelDetails: 'Detalhes da Solicitação',
+        btnSubmitRequest: 'Enviar Solicitação',
+        myInquiriesHeading: 'Minhas Solicitações Enviadas',
         portalReady: 'Pronto para conectar ao Portal Zhaoma.',
         contactTitle: 'Fale Conosco',
         contactEmailTitle: 'E-mail',
@@ -1042,7 +1320,9 @@
         footerResources: 'Recursos',
         termsShort: 'Termos',
         privacyShort: 'Privacidade',
-        liveSupport: '💬 Suporte ao Vivo'
+        liveSupport: '💬 Suporte ao Vivo',
+        modalSupportTitle: 'Falar com um Consultor Zhaoma',
+        modalSupportDesc: 'Escolha seu canal preferido para falar com nossa equipe na China ou na Nigéria.'
       },
       ar: {
         label: 'Arabic',
@@ -1093,6 +1373,14 @@
         btnSignup: 'إنشاء حساب',
         profileHeading: 'ملف العميل',
         btnLogout: 'تسجيل الخروج',
+        inquiryFormHeading: 'إرسال طلب خدمة',
+        inquiryFormIntro: 'أرسل طلباً مباشراً إلى فرقنا في الصين ونيجيريا.',
+        labelCategory: 'فئة الخدمة',
+        labelSubject: 'الموضوع / المنتج أو البرنامج',
+        labelBudget: 'الميزانية أو الكمية التقديرية (اختياري)',
+        labelDetails: 'تفاصيل الطلب',
+        btnSubmitRequest: 'إرسال الطلب',
+        myInquiriesHeading: 'طلباتي المرسلة',
         portalReady: 'جاهز للاتصال ببوابة زاوما.',
         contactTitle: 'اتصل بنا',
         contactEmailTitle: 'البريد الإلكتروني',
@@ -1109,7 +1397,9 @@
         footerResources: 'الموارد',
         termsShort: 'الشروط',
         privacyShort: 'الخصوصية',
-        liveSupport: '💬 الدعم المباشر'
+        liveSupport: '💬 الدعم المباشر',
+        modalSupportTitle: 'تحدث مع مستشار زاوما',
+        modalSupportDesc: 'اختر وسيلة التواصل المناسبة للتحدث مع مكتبنا في الصين أو نيجيريا.'
       },
       yo: {
         label: 'Yoruba',
@@ -1160,6 +1450,14 @@
         btnSignup: 'Dá Àkọọlẹ Sí lẹ̀',
         profileHeading: 'Àkọọlẹ Oníbàárà',
         btnLogout: 'Jáde',
+        inquiryFormHeading: 'Firanṣẹ́ Ìbéèrè Iṣẹ́',
+        inquiryFormIntro: 'Firanṣẹ́ ìbéèrè tààrà sí àwọn ẹgbẹ́ wa ní Ṣáínà àti Nàìjíríà.',
+        labelCategory: 'Irú Iṣẹ́',
+        labelSubject: 'Àkọlé / Ọjà tàbí Ètò',
+        labelBudget: 'Ìṣirò Owó tàbí Iye (Àṣàyàn)',
+        labelDetails: 'Àlàyé Ìbéèrè',
+        btnSubmitRequest: 'Firanṣẹ́ Ìbéèrè',
+        myInquiriesHeading: 'Àwọn Ìbéèrè Tí Mo Ti Firanṣẹ́',
         portalReady: 'Ó ti ṣetán láti sopọ̀ mọ́ Zhaoma Portal.',
         contactTitle: 'Kàn Sí Wa',
         contactEmailTitle: 'Ímẹ́ẹ̀lì',
@@ -1176,7 +1474,9 @@
         footerResources: 'Àwọn Ohun Èlò',
         termsShort: 'Àwọn Òfin',
         privacyShort: 'Ìpamọ́',
-        liveSupport: '💬 Ìrànlọ́wọ́ Lẹ́sẹ̀kẹsẹ̀'
+        liveSupport: '💬 Ìrànlọ́wọ́ Lẹ́sẹ̀kẹsẹ̀',
+        modalSupportTitle: 'Bá Olùdámọ̀ràn Zhaoma Sọ̀rọ̀',
+        modalSupportDesc: 'Yan ọ̀nà ìbánisọ̀rọ̀ tí ó rọrùn fún ọ láti bá ọ́fíìsì wa ní Ṣáínà tàbí Nàìjíríà sọ̀rọ̀.'
       },
       ig: {
         label: 'Igbo',
@@ -1227,6 +1527,14 @@
         btnSignup: 'Mepụta Akaụntụ',
         profileHeading: 'Profaịlụ Onye Ahịa',
         btnLogout: 'Pụọ',
+        inquiryFormHeading: 'Ziga Arịrịọ Ọrụ',
+        inquiryFormIntro: 'Ziga arịrịọ ozugbo na ndị otu anyị nọ na China na Nigeria.',
+        labelCategory: 'Ụdị Ọrụ',
+        labelSubject: 'Isiokwu / Ngwaahịa ma ọ bụ Mmemme',
+        labelBudget: 'Ego E Mere Atụmatụ ma ọ bụ ỌnụỌgụgụ (Nhọrọ)',
+        labelDetails: 'Nkọwa Arịrịọ',
+        btnSubmitRequest: 'Ziga Arịrịọ',
+        myInquiriesHeading: 'Arịrịọ M Zigara',
         portalReady: 'Ọ dị njikere ijikọ na Zhaoma Portal.',
         contactTitle: 'Kpọtụrụ Anyị',
         contactEmailTitle: 'Email',
@@ -1243,7 +1551,9 @@
         footerResources: 'Akụrụngwa',
         termsShort: 'Usoro',
         privacyShort: 'Nzuzo',
-        liveSupport: '💬 Enyemaka Dị Ndụ'
+        liveSupport: '💬 Enyemaka Dị Ndụ',
+        modalSupportTitle: 'Gwa Onye Ndụmọdụ Zhaoma Okwu',
+        modalSupportDesc: 'Họrọ ụzọ kacha mma ị ga-esi kpọtụrụ ụlọ ọrụ anyị na China ma ọ bụ Nigeria.'
       },
       ha: {
         label: 'Hausa',
@@ -1294,6 +1604,14 @@
         btnSignup: 'Ƙirƙiri Asusu',
         profileHeading: 'Bayanan Abokin Ciniki',
         btnLogout: 'Fita',
+        inquiryFormHeading: 'Aika Buƙatar Sabis',
+        inquiryFormIntro: 'Aika buƙata kai tsaye zuwa ga ƙungiyoyinmu na Sin da Najeriya.',
+        labelCategory: 'Nau’in Sabis',
+        labelSubject: 'Batun / Kaya ko Shiri',
+        labelBudget: 'Kasafin Kuɗi ko Adadi (Na Zaɓi)',
+        labelDetails: 'Cikakken Bayanin Buƙata',
+        btnSubmitRequest: 'Aika Buƙata',
+        myInquiriesHeading: 'Buƙatun da Na Aika',
         portalReady: 'A shirye don haɗawa da Zhaoma Portal.',
         contactTitle: 'Tuntuɓe Mu',
         contactEmailTitle: 'Imel',
@@ -1310,7 +1628,9 @@
         footerResources: 'Dabarun Tallafi',
         termsShort: 'Sharuɗɗa',
         privacyShort: 'Sirri',
-        liveSupport: '💬 Tallafin Kai Tsaye'
+        liveSupport: '💬 Tallafin Kai Tsaye',
+        modalSupportTitle: 'Yi Magana da Mai Ba da Shawara na Zhaoma',
+        modalSupportDesc: 'Zaɓi hanyar sadarwar da ta fi dacewa don tuntuɓar ofishinmu na Sin ko Najeriya.'
       },
       pcm: {
         label: 'Nigerian Pidgin',
@@ -1361,6 +1681,14 @@
         btnSignup: 'Create Account',
         profileHeading: 'Client Profile',
         btnLogout: 'Sign Out',
+        inquiryFormHeading: 'Send Service Request',
+        inquiryFormIntro: 'Send direct request go our China & Nigeria team.',
+        labelCategory: 'Service Category',
+        labelSubject: 'Subject / Product or Program Name',
+        labelBudget: 'Estimated Budget or Quantity (Optional)',
+        labelDetails: 'Request Details',
+        btnSubmitRequest: 'Send Service Request',
+        myInquiriesHeading: 'My Submitted Inquiries',
         portalReady: 'Ready to connect to Zhaoma Portal.',
         contactTitle: 'Contact Us',
         contactEmailTitle: 'Email',
@@ -1377,7 +1705,9 @@
         footerResources: 'Resources',
         termsShort: 'Terms',
         privacyShort: 'Privacy',
-        liveSupport: '💬 Live Support'
+        liveSupport: '💬 Live Support',
+        modalSupportTitle: 'Talk to Zhaoma Advisor',
+        modalSupportDesc: 'Choose how you wan reach our China or Nigeria office right now.'
       },
       sw: {
         label: 'Swahili',
@@ -1428,6 +1758,14 @@
         btnSignup: 'Fungua Akaunti',
         profileHeading: 'Wasifu wa Mteja',
         btnLogout: 'Toka',
+        inquiryFormHeading: 'Tuma Ombi la Huduma',
+        inquiryFormIntro: 'Tuma ombi moja kwa moja kwa timu zetu za China na Nigeria.',
+        labelCategory: 'Aina ya Huduma',
+        labelSubject: 'Mada / Bidhaa au Programu',
+        labelBudget: 'Bajeti au Idadi Inayokadiriwa (Hiari)',
+        labelDetails: 'Maelezo ya Ombi',
+        btnSubmitRequest: 'Tuma Ombi',
+        myInquiriesHeading: 'Maombi Yangu Niliyowasilisha',
         portalReady: 'Tayari kuunganisha na Zhaoma Portal.',
         contactTitle: 'Wasiliana Nasi',
         contactEmailTitle: 'Barua pepe',
@@ -1444,10 +1782,107 @@
         footerResources: 'Rasilimali',
         termsShort: 'Masharti',
         privacyShort: 'Faragha',
-        liveSupport: '💬 Msaada wa Moja kwa Moja'
+        liveSupport: '💬 Msaada wa Moja kwa Moja',
+        modalSupportTitle: 'Zungumza na Mshauri wa Zhaoma',
+        modalSupportDesc: 'Chagua njia unayopendelea kuwasiliana na ofisi yetu ya China au Nigeria.'
       }
     };
 
+    // --- Mobile Navigation Toggle ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // --- Policy Smooth Jump & Highlight (Terms, Privacy, Refund Policy) ---
+    const policyTabButtons = Array.from(document.querySelectorAll('.policy-tab-btn'));
+    const policyJumpLinks = Array.from(document.querySelectorAll('.policy-jump-link'));
+    const policyCards = ['terms', 'privacy', 'refund']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    function focusPolicyCard(targetId, shouldScroll = true) {
+      const card = document.getElementById(targetId);
+      if (!card) return;
+
+      policyCards.forEach((c) => c.classList.remove('policy-active'));
+      policyTabButtons.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.policyTarget === targetId);
+      });
+
+      card.classList.add('policy-active');
+      if (shouldScroll) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (history.replaceState) {
+        history.replaceState(null, '', `#${targetId}`);
+      }
+    }
+
+    policyTabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        focusPolicyCard(btn.dataset.policyTarget, true);
+      });
+    });
+
+    policyJumpLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        focusPolicyCard(link.dataset.policyTarget, true);
+      });
+    });
+
+    const initialHash = window.location.hash.replace('#', '');
+    if (['terms', 'privacy', 'refund'].includes(initialHash)) {
+      setTimeout(() => focusPolicyCard(initialHash, true), 150);
+    }
+
+    // --- Advisor & Live Support Modal ---
+    const supportModal = document.getElementById('support-modal');
+    const closeSupportModalBtn = document.getElementById('close-support-modal');
+    const modalPortalJump = document.getElementById('modal-portal-jump');
+
+    function openSupportModal() {
+      supportModal?.classList.add('open');
+    }
+
+    function closeSupportModal() {
+      supportModal?.classList.remove('open');
+    }
+
+    document.querySelectorAll('.open-support-modal').forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        openSupportModal();
+      });
+    });
+
+    closeSupportModalBtn?.addEventListener('click', closeSupportModal);
+    modalPortalJump?.addEventListener('click', closeSupportModal);
+
+    supportModal?.addEventListener('click', (event) => {
+      if (event.target === supportModal) {
+        closeSupportModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && supportModal?.classList.contains('open')) {
+        closeSupportModal();
+      }
+    });
+
+    // --- Multilingual Engine ---
     const langButtonsContainer = document.getElementById('lang-buttons');
     const langButtons = Array.from(document.querySelectorAll('#lang-buttons .lang'));
     const langStatus = document.getElementById('lang-status');
@@ -1494,7 +1929,7 @@
         try {
           localStorage.setItem(STORAGE_LANG_KEY, activeKey);
         } catch (_) {
-          // Ignore storage restrictions in private browsing modes
+          // Ignore storage restrictions
         }
       }
     }
@@ -1524,6 +1959,7 @@
     }
     applyLanguage(initialLang, false);
 
+    // --- Supabase Client Portal & Service Inquiries ---
     const authForms = document.getElementById('auth-forms');
     const signedInView = document.getElementById('signed-in-view');
     const profileDetails = document.getElementById('profile-details');
@@ -1536,10 +1972,10 @@
     const btnSignup = document.getElementById('btn-signup');
     const btnLogout = document.getElementById('btn-logout');
 
-    // --- Client Portal Inquiry Form & Tracker ---
     const inquiryForm = document.getElementById('portal-inquiry-form');
     const inquiryStatusMsg = document.getElementById('inq-status-msg');
     const inquiriesListEl = document.getElementById('my-inquiries-list');
+    const btnRefreshInquiries = document.getElementById('btn-refresh-inquiries');
 
     let authRequestSeq = 0;
 
@@ -1617,6 +2053,14 @@
       }).join('');
     }
 
+    btnRefreshInquiries?.addEventListener('click', async () => {
+      btnRefreshInquiries.disabled = true;
+      btnRefreshInquiries.textContent = 'Refreshing...';
+      await loadMyInquiries();
+      btnRefreshInquiries.textContent = '↻ Refresh';
+      btnRefreshInquiries.disabled = false;
+    });
+
     if (inquiryForm) {
       inquiryForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -1685,12 +2129,14 @@
         if (error || !user) {
           if (authForms) authForms.style.display = 'block';
           if (signedInView) signedInView.style.display = 'none';
+          setPortalStatus('Ready to connect to Zhaoma Portal.');
           await loadMyInquiries(null);
           return;
         }
 
         if (authForms) authForms.style.display = 'none';
         if (signedInView) signedInView.style.display = 'block';
+        setPortalStatus(`Connected to Zhaoma Portal as ${user.email}.`);
 
         const { data: profile, error: profileError } = await supabase
           .from('clients')
